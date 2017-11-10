@@ -57,7 +57,7 @@ public class TestWheel {
     @Test
     public void nudgeAvailableIfNumIs10() throws Exception {
         Wheel spy = Mockito.spy(new Wheel());
-        Mockito.when(spy.randomInt(20)).thenReturn(10);
+        Mockito.when(spy.randomInt(30)).thenReturn(10);
         spy.randomAssignNudgeAvailable();
         assertEquals(true, spy.getNudgeAvailable());
     }
@@ -65,15 +65,22 @@ public class TestWheel {
     @Test
     public void nudgeNotAvailableIfNumIsNot10() throws Exception {
         Wheel spy = Mockito.spy(new Wheel());
-        Mockito.when(spy.randomInt(20)).thenReturn(8);
+        Mockito.when(spy.randomInt(30)).thenReturn(8);
         spy.randomAssignNudgeAvailable();
         assertEquals(false, spy.getNudgeAvailable());
     }
 
     @Test
+    public void nudgeNotAvailableAfterNudging() throws Exception {
+        wheel1.setNudgeAvailable(true);
+        wheel1.nudge();
+        assertEquals(false, wheel1.getNudgeAvailable());
+    }
+
+    @Test
     public void holdAvailableIfNumIs10() throws Exception {
         Wheel spy = Mockito.spy(new Wheel());
-        Mockito.when(spy.randomInt(20)).thenReturn(10);
+        Mockito.when(spy.randomInt(30)).thenReturn(10);
         spy.randomAssignHoldAvailable();
         assertEquals(true, spy.getHoldAvailable());
     }
@@ -81,8 +88,13 @@ public class TestWheel {
     @Test
     public void holdNotAvailableIfNumIsNot10() throws Exception {
         Wheel spy = Mockito.spy(new Wheel());
-        Mockito.when(spy.randomInt(20)).thenReturn(8);
+        Mockito.when(spy.randomInt(30)).thenReturn(8);
         spy.randomAssignHoldAvailable();
         assertEquals(false, spy.getHoldAvailable());
+    }
+
+    @Test
+    public void canGetImageFromSymbolIndex() throws Exception {
+        assertEquals("@drawable/lion", wheel1.getSymbolImageAtIndex(2));
     }
 }

@@ -29,16 +29,28 @@ public class SlotMachine {
         return numberOfWheels;
     }
 
-    public int getGameBank() {
+    public int checkGameBank() {
         return gameBank;
     }
 
-    public int getPlayerFunds() {
+    public int checkPlayerFunds() {
         return playerFunds;
     }
 
     public boolean isQuit() {
         return quit;
+    }
+
+    public void setPlayerFunds(int amount) {
+        this.playerFunds = amount;
+    }
+
+    public void addToGameBank(int amount) {
+        this.gameBank += amount;
+    }
+
+    public void setQuit(boolean quit) {
+        this.quit = quit;
     }
 
     public int countSlots(){
@@ -51,4 +63,19 @@ public class SlotMachine {
         }
     }
 
+    public void addPlayerFunds(int amount){
+        this.playerFunds += amount;
+    }
+
+    public ArrayList<Symbols> spin(){
+        addPlayerFunds(-1);
+        addToGameBank(1);
+        ArrayList<Symbols> line = new ArrayList<>();
+        for(Wheel wheel: slots){
+            if(wheel.getPlayerHasHeld()){
+                 line.add(wheel.getCurrentSymbol());
+            } else line.add(wheel.getRandomSymbol());
+        }
+        return line;
+    }
 }

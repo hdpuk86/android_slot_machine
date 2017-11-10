@@ -12,6 +12,7 @@ public class Wheel {
     private ArrayList<Symbols> allSymbols;
     private Boolean holdAvailable;
     private Boolean nudgeAvailable;
+    private Boolean playerHasHeld;
 //    private int currentIndex;
     private Symbols currentSymbol;
 
@@ -19,6 +20,7 @@ public class Wheel {
         this.allSymbols = new ArrayList<>();
         this.holdAvailable = false;
         this.nudgeAvailable = false;
+        this.playerHasHeld = false;
 //        this.currentIndex = getSymbolIndex(this.getCurrentSymbol());
         generateSymbols();
         this.currentSymbol = getRandomSymbol();
@@ -44,7 +46,15 @@ public class Wheel {
         this.nudgeAvailable = nudgeAvailable;
     }
 
-//    public void setCurrentIndex(int currentIndex) {
+    public Boolean getPlayerHasHeld() {
+        return playerHasHeld;
+    }
+
+    public void setPlayerHasHeld(Boolean playerHasHeld) {
+        this.playerHasHeld = playerHasHeld;
+    }
+
+    //    public void setCurrentIndex(int currentIndex) {
 //        this.currentIndex = currentIndex;
 //    }
 
@@ -111,6 +121,11 @@ public class Wheel {
         } else {
             setHoldAvailable(false);
         }
+    }
+
+    public String getSymbolImageAtIndex(int index){
+        Symbols symbol = getSymbolAtIndex(index);
+        return symbol.getImageName();
     }
 
 }
