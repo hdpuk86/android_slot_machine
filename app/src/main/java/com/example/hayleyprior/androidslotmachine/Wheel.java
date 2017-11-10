@@ -84,16 +84,18 @@ public class Wheel {
         return getSymbolAtIndex(randomIndex);
     }
 
-    public void nudge(){
+    public Symbols nudge(){
         if(getSymbolIndex(currentSymbol) == 0){
             setCurrentSymbol(getSymbolAtIndex(countSymbols() - 1));
         } else {
             int newIndex = getSymbolIndex(this.currentSymbol) - 1;
             setCurrentSymbol(getSymbolAtIndex(newIndex));
         }
+        setNudgeAvailable(false);
+        return getCurrentSymbol();
     }
 
-    public void setNudgeAvailable(){
+    public void randomAssignNudgeAvailable(){
         int randomNumber = randomInt(20);
         if(randomNumber == 10){
             setNudgeAvailable(true);
@@ -102,7 +104,7 @@ public class Wheel {
         }
     }
 
-    public void setHoldAvailable(){
+    public void randomAssignHoldAvailable(){
         int randomNumber = randomInt(20);
         if(randomNumber == 10){
             setHoldAvailable(true);
@@ -110,7 +112,5 @@ public class Wheel {
             setHoldAvailable(false);
         }
     }
-
-
 
 }
