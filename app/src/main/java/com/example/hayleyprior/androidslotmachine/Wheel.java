@@ -96,7 +96,7 @@ public class Wheel {
     }
 
     public void randomAssignNudgeAvailable(){
-        int randomNumber = randomInt(20);
+        int randomNumber = randomInt(30);
         if(randomNumber == 10){
             setNudgeAvailable(true);
         } else {
@@ -105,7 +105,7 @@ public class Wheel {
     }
 
     public void randomAssignHoldAvailable(){
-        int randomNumber = randomInt(20);
+        int randomNumber = randomInt(30);
         if(randomNumber == 10){
             setHoldAvailable(true);
         } else {
