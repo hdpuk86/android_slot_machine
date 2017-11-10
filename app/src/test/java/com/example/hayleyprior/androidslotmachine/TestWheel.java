@@ -36,4 +36,24 @@ public class TestWheel {
         Mockito.when(spy.randomInt(spy.countSymbols())).thenReturn(10);
         assertEquals(Symbols.SPIN, spy.getRandomSymbol());
     }
+
+    @Test
+    public void canGetIndexOfSymbol() throws Exception {
+        assertEquals(1, wheel1.getSymbolIndex(Symbols.RHINO));
+    }
+
+    @Test
+    public void nudgeSetsCurrentSymbolToPrevious() throws Exception {
+        wheel1.setCurrentSymbol(Symbols.ELEPHANT);
+        wheel1.nudge();
+        assertEquals(Symbols.BUFFALO, wheel1.getCurrentSymbol());
+    }
+
+    @Test
+    public void nudgeFromIndexZeroSetsLastSymbol() throws Exception {
+        wheel1.setCurrentSymbol(Symbols.LEOPARD);
+        wheel1.nudge();
+        assertEquals(Symbols.SPIN, wheel1.getCurrentSymbol());
+    }
+
 }

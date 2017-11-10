@@ -12,16 +12,16 @@ public class Wheel {
     private ArrayList<Symbols> allSymbols;
     private Boolean holdAvailable;
     private Boolean nudgeAvailable;
-    private int currentIndex;
+//    private int currentIndex;
     private Symbols currentSymbol;
 
     public Wheel(){
         this.allSymbols = new ArrayList<>();
         this.holdAvailable = false;
         this.nudgeAvailable = false;
-//        this.currentIndex = ;
-//        this.currentSymbol = ;
+//        this.currentIndex = getSymbolIndex(this.getCurrentSymbol());
         generateSymbols();
+        this.currentSymbol = getRandomSymbol();
     }
 
     public Boolean getHoldAvailable() {
@@ -31,16 +31,34 @@ public class Wheel {
     public Boolean getNudgeAvailable() {
         return nudgeAvailable;
     }
+//
+//    public int getCurrentIndex() {
+//        return currentIndex;
+//    }
 
-    public int getCurrentIndex() {
-        return currentIndex;
+    public void setHoldAvailable(Boolean holdAvailable) {
+        this.holdAvailable = holdAvailable;
+    }
+
+    public void setNudgeAvailable(Boolean nudgeAvailable) {
+        this.nudgeAvailable = nudgeAvailable;
+    }
+
+//    public void setCurrentIndex(int currentIndex) {
+//        this.currentIndex = currentIndex;
+//    }
+
+    public void setCurrentSymbol(Symbols currentSymbol) {
+        this.currentSymbol = currentSymbol;
     }
 
     public Symbols getCurrentSymbol() {
         return currentSymbol;
     }
 
-
+    public int getSymbolIndex(Symbols symbol){
+        return this.allSymbols.indexOf(symbol);
+    }
 
     public void generateSymbols(){
         for(Symbols symbol : Symbols.values()){
@@ -65,5 +83,16 @@ public class Wheel {
         int randomIndex = randomInt(countSymbols());
         return getSymbolAtIndex(randomIndex);
     }
+
+    public void nudge(){
+        if(getSymbolIndex(currentSymbol) == 0){
+            setCurrentSymbol(getSymbolAtIndex(countSymbols() - 1));
+        } else {
+            int newIndex = getSymbolIndex(this.currentSymbol) - 1;
+            setCurrentSymbol(getSymbolAtIndex(newIndex));
+        }
+    }
+
+
 
 }
