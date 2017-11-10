@@ -93,6 +93,24 @@ public class Wheel {
         }
     }
 
+    public void setNudgeAvailable(){
+        int randomNumber = randomInt(20);
+        if(randomNumber == 10){
+            setNudgeAvailable(true);
+        } else {
+            setNudgeAvailable(false);
+        }
+    }
+
+    public void setHoldAvailable(){
+        int randomNumber = randomInt(20);
+        if(randomNumber == 10){
+            setHoldAvailable(true);
+        } else {
+            setHoldAvailable(false);
+        }
+    }
+
 
 
 }

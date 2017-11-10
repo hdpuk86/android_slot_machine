@@ -56,4 +56,35 @@ public class TestWheel {
         assertEquals(Symbols.SPIN, wheel1.getCurrentSymbol());
     }
 
+    @Test
+    public void nudgeAvailableIfNumIs10() throws Exception {
+        Wheel spy = Mockito.spy(new Wheel());
+        Mockito.when(spy.randomInt(20)).thenReturn(10);
+        spy.setNudgeAvailable();
+        assertEquals(true, spy.getNudgeAvailable());
+    }
+
+    @Test
+    public void nudgeNotAvailableIfNumIsNot10() throws Exception {
+        Wheel spy = Mockito.spy(new Wheel());
+        Mockito.when(spy.randomInt(20)).thenReturn(8);
+        spy.setNudgeAvailable();
+        assertEquals(false, spy.getNudgeAvailable());
+    }
+
+    @Test
+    public void holdAvailableIfNumIs10() throws Exception {
+        Wheel spy = Mockito.spy(new Wheel());
+        Mockito.when(spy.randomInt(20)).thenReturn(10);
+        spy.setHoldAvailable();
+        assertEquals(true, spy.getHoldAvailable());
+    }
+
+    @Test
+    public void holdNotAvailableIfNumIsNot10() throws Exception {
+        Wheel spy = Mockito.spy(new Wheel());
+        Mockito.when(spy.randomInt(20)).thenReturn(8);
+        spy.setHoldAvailable();
+        assertEquals(false, spy.getHoldAvailable());
+    }
 }
