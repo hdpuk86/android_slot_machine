@@ -78,4 +78,18 @@ public class SlotMachine {
         }
         return line;
     }
+
+    public String getSymbolImage(Symbols symbol){
+        return symbol.getImageName();
+    }
+
+    public ArrayList<String> getLineImages(ArrayList<Symbols> line) {
+        ArrayList<String> images = new ArrayList<>();
+        for (Symbols symbol : line) {
+            String image = getSymbolImage(symbol);
+            images.add(image);
+        }
+        return images;
+    }
+
 }

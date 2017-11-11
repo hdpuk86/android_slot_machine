@@ -97,4 +97,5 @@ public class TestWheel {
     public void canGetImageFromSymbolIndex() throws Exception {
         assertEquals("@drawable/lion", wheel1.getSymbolImageAtIndex(2));
     }
+
 }

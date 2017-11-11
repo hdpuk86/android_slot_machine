@@ -113,9 +113,15 @@ public class Wheel {
         }
     }
 
-    public String getSymbolImageAtIndex(int index){
-        Symbols symbol = getSymbolAtIndex(index);
+    public String getSymbolImage(Symbols symbol){
         return symbol.getImageName();
     }
+
+    public String getSymbolImageAtIndex(int index){
+        Symbols symbol = getSymbolAtIndex(index);
+        return getSymbolImage(symbol);
+    }
+
+
 
 }

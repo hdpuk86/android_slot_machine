@@ -2,4 +2,5 @@
     <string name="app_name">AndroidSlotMachine</string>
     <string name="new_game_btn">new game</string>
     <string name="game_name">BIG 5 SAFARI SLOTS</string>
+    <string name="add_money_text">Add money to play</string>
 </resources>

@@ -7,34 +7,34 @@
     android:background="@drawable/bglandscape"
     tools:context="com.example.hayleyprior.androidslotmachine.HomeActivity">
 
-    <TextView
-        android:id="@+id/homeTitleLS"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/rubik_mono_one"
-        android:text="@string/game_name"
-        android:textColor="@android:color/background_light"
-        android:textSize="50sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <Button
         android:id="@+id/LSNewGameBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:layout_marginStart="88dp"
+        android:layout_marginStart="28dp"
         android:layout_marginTop="8dp"
         android:background="@android:color/transparent"
+        android:onClick="onClickNewGameButton"
         android:text="@string/new_game_btn"
         android:textColor="@android:color/background_light"
         android:textSize="36sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/homeTitleLS"
-        app:layout_constraintVertical_bias="0.765" />
+        app:layout_constraintTop_toBottomOf="@+id/game_titleLS"
+        app:layout_constraintVertical_bias="0.09" />
+
+    <ImageView
+        android:id="@+id/game_titleLS"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:contentDescription="@string/game_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.047"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo" />
 </android.support.constraint.ConstraintLayout>

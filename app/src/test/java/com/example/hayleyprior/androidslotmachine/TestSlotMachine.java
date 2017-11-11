@@ -2,7 +2,9 @@ package com.example.hayleyprior.androidslotmachine;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Mockito;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
@@ -13,13 +15,19 @@ import static org.junit.Assert.assertEquals;
 
 public class TestSlotMachine {
 
+    private Symbols lion;
+    private Symbols alligator;
     private Wheel wheel;
     private SlotMachine slotMachine;
+    private SlotMachine spy;
 
     @Before
     public void setUp() throws Exception {
+        lion = Symbols.LION;
+        alligator = Symbols.ALLIGATOR;
         wheel = new Wheel();
         slotMachine = new SlotMachine(wheel, 3);
+        spy = Mockito.spy((new SlotMachine(wheel, 3)));
     }
 
     @Test
@@ -57,5 +65,14 @@ public class TestSlotMachine {
     public void gameBankIncreasesAfterSpin() throws Exception {
         slotMachine.spin();
         assertEquals(1, slotMachine.checkGameBank());
+    }
+
+    @Test
+    public void canGetLineImages() {
+        ArrayList<Symbols> line = new ArrayList<>();
+        line.add(lion);
+        line.add(alligator);
+        ArrayList<String> images = slotMachine.getLineImages(line);
+        assertEquals("@drawable/lion", images.get(0));
     }
 }
