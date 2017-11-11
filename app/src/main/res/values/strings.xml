@@ -5,4 +5,12 @@
     <string name="add_money_text">Add money to play</string>
     <string name="nudge">NUDGE</string>
     <string name="hold">HOLD</string>
+    <string name="firstSymbol">first fruit machine symbol</string>
+    <string name="secondSymbol">second fruit machine symbol</string>
+    <string name="white_background">white background</string>
+    <string name="symbolThree">third symbol image</string>
+    <string name="slot_machine">slot machine</string>
+    <string name="spin_button">spin button</string>
+    <string name="poundSign">£</string>
+    <string name="collect_button">collect button</string>
 </resources>

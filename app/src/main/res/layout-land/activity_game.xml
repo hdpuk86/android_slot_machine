@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimaryDark"
+    android:background="@drawable/gamebackground"
     tools:context="com.example.hayleyprior.androidslotmachine.GameActivity">
 
     <Button
@@ -19,7 +19,8 @@
         android:textColor="@color/nudge"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/imageView12"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="@+id/slotMachineImage"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
@@ -34,6 +35,7 @@
         android:textColor="@color/nudge"
         android:textSize="24sp"
         android:textStyle="bold"
+        android:visibility="invisible"
         app:layout_constraintEnd_toStartOf="@+id/slot3Nudgebutton"
         app:layout_constraintStart_toEndOf="@+id/slot1Nudgebutton"
         app:layout_constraintTop_toTopOf="parent" />
@@ -49,7 +51,8 @@
         android:textColor="@color/nudge"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/imageView12"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@+id/slotMachineImage"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
@@ -58,9 +61,13 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginStart="8dp"
+        android:background="@color/nudge"
         android:text="@string/hold"
+        android:textColor="@color/nudgeBG"
+        android:textSize="24sp"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/imageView12" />
+        app:layout_constraintStart_toStartOf="@+id/slotMachineImage" />
 
     <Button
         android:id="@+id/slot2HoldButton"
@@ -69,7 +76,11 @@
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
+        android:background="@color/nudge"
         android:text="@string/hold"
+        android:textColor="@color/nudgeBG"
+        android:textSize="24sp"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/slot3HoldButton"
         app:layout_constraintStart_toEndOf="@+id/slot1HoldButton" />
@@ -80,9 +91,13 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
+        android:background="@color/nudge"
         android:text="@string/hold"
+        android:textColor="@color/nudgeBG"
+        android:textSize="24sp"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/imageView12" />
+        app:layout_constraintEnd_toEndOf="@+id/slotMachineImage" />
 
     <ImageView
         android:id="@+id/whiteSlotBg"
@@ -92,6 +107,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:contentDescription="@string/white_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -105,6 +121,7 @@
         android:layout_marginBottom="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:contentDescription="@string/secondSymbol"
         app:layout_constraintBottom_toBottomOf="@+id/whiteSlotBg"
         app:layout_constraintStart_toStartOf="@+id/whiteSlotBg"
         app:layout_constraintTop_toTopOf="@+id/whiteSlotBg"
@@ -119,6 +136,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:contentDescription="@string/firstSymbol"
         app:layout_constraintBottom_toBottomOf="@+id/whiteSlotBg"
         app:layout_constraintEnd_toStartOf="@+id/imageSymbol3"
         app:layout_constraintStart_toEndOf="@+id/imageSymbol2"
@@ -133,6 +151,7 @@
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginTop="8dp"
+        android:contentDescription="@string/symbolThree"
         app:layout_constraintBottom_toBottomOf="@+id/whiteSlotBg"
         app:layout_constraintEnd_toEndOf="@+id/whiteSlotBg"
         app:layout_constraintTop_toTopOf="@+id/whiteSlotBg"
@@ -140,13 +159,14 @@
         app:srcCompat="@drawable/hippo" />
 
     <ImageView
-        android:id="@+id/imageView12"
+        android:id="@+id/slotMachineImage"
         android:layout_width="400dp"
         android:layout_height="200dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:contentDescription="@string/slot_machine"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -161,12 +181,54 @@
         android:layout_marginEnd="8dp"
         android:layout_marginTop="8dp"
         android:background="@android:color/transparent"
+        android:contentDescription="@string/spin_button"
         android:scaleType="centerInside"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.497"
         app:srcCompat="@drawable/spinbutton" />
+
+    <TextView
+        android:id="@+id/poundSign"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/rubik_mono_one"
+        android:text="@string/poundSign"
+        android:textColor="@color/gold"
+        android:textSize="34sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/playerFundsText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:textColor="@color/gold"
+        android:textSize="24sp"
+        app:layout_constraintStart_toEndOf="@+id/poundSign"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="000" />
+
+    <ImageButton
+        android:id="@+id/collectButton"
+        android:layout_width="89dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="4dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/collect_button"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toStartOf="@+id/slotMachineImage"
+        app:layout_constraintHorizontal_bias="0.111"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/playerFundsText"
+        app:srcCompat="@drawable/collect" />
 
 
 </android.support.constraint.ConstraintLayout>
