@@ -3,4 +3,6 @@
     <color name="colorPrimary">#d14836</color>
     <color name="colorPrimaryDark">#120015</color>
     <color name="colorAccent">#9ee493</color>
+    <color name="nudge">#f9f199</color>
+    <color name="nudgeBG">#ff0d00</color>
 </resources>
