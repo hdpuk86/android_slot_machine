@@ -22,8 +22,10 @@
             android:resource="@array/preloaded_fonts" />
 
         <activity android:name=".MoneyActivity" />
-        <activity android:name=".GameActivity" android:screenOrientation="landscape"
-            ></activity>
+        <activity
+            android:name=".GameActivity"
+            android:screenOrientation="landscape" />
+        <activity android:name=".GameOverActivity"></activity>
     </application>
 
 </manifest>

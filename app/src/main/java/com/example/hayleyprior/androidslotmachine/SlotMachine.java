@@ -85,6 +85,10 @@ public class SlotMachine {
         return false;
     }
 
+    public int getWinValue(ArrayList<Symbols> line){
+        return line.get(0).getValue();
+    }
+
     public ArrayList<Symbols> spin(){
         addPlayerFunds(-1);
         addToGameBank(1);

@@ -97,14 +97,32 @@ public class GameActivity extends AppCompatActivity {
         playerFunds.setText(newPlayerFunds.toString());
     }
 
-    public void onSpinButtonClicked(View button){
-        ArrayList<Symbols> newLine = changeImagesOnSpin();
-
-        if(slotMachine.checkWin(newLine)){
-            slotMachine.addPlayerFunds(newLine.get(0).getValue());
+    public boolean checkPlayerBust(){
+        int money = slotMachine.checkPlayerFunds();
+        if(money <= 0){
+            return true;
         }
+        return false;
+    }
 
-        updatePlayerMoney();
+    public void gameOver(){
+        Intent i = new Intent(this, GameOverActivity.class);
+        startActivity(i);
+    }
+
+    public void onSpinButtonClicked(View button){
+        if(!checkPlayerBust()) {
+            ArrayList<Symbols> newLine = changeImagesOnSpin();
+            int value = slotMachine.getWinValue(newLine);
+
+            if (slotMachine.checkWin(newLine)) {
+                slotMachine.addPlayerFunds(value);
+            }
+
+            updatePlayerMoney();
 //        showHoldIfAvailable();
+        } else {
+            gameOver();
+        }
     }
 }

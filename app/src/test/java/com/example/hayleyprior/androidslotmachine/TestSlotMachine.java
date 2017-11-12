@@ -93,4 +93,25 @@ public class TestSlotMachine {
         line.add(Symbols.LION);
         assertEquals(false, slotMachine.checkWin(line));
     }
+
+    @Test
+    public void canGetWinValue() throws Exception {
+        ArrayList<Symbols> line = new ArrayList<>();
+        line.add(Symbols.RHINO);
+        line.add(Symbols.RHINO);
+        line.add(Symbols.RHINO);
+        assertEquals(80, slotMachine.getWinValue(line));
+    }
+
+    @Test
+    public void canUpdateFundsFromWin() throws Exception {
+        slotMachine.setPlayerFunds(5);
+        ArrayList<Symbols> line = new ArrayList<>();
+        line.add(Symbols.RHINO);
+        line.add(Symbols.RHINO);
+        line.add(Symbols.RHINO);
+        int value = slotMachine.getWinValue(line);
+        slotMachine.addPlayerFunds(value);
+        assertEquals(85, slotMachine.checkPlayerFunds());
+    }
 }
