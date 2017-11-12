@@ -224,6 +224,7 @@
         android:layout_marginTop="4dp"
         android:background="@android:color/transparent"
         android:contentDescription="@string/collect_button"
+        android:onClick="onCollectButtonClicked"
         android:scaleType="fitXY"
         app:layout_constraintEnd_toStartOf="@+id/slotMachineImage"
         app:layout_constraintHorizontal_bias="0.111"

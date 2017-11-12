@@ -13,4 +13,6 @@
     <string name="spin_button">spin button</string>
     <string name="poundSign">£</string>
     <string name="collect_button">collect button</string>
+    <string name="you_collected">You collected:</string>
+    <string name="play_again">Play Again</string>
 </resources>

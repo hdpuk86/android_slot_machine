@@ -24,6 +24,7 @@ public class GameActivity extends AppCompatActivity {
     private Button hold1;
     private Button hold2;
     private Button hold3;
+    private Integer startMoney;
 
 
     @Override
@@ -46,33 +47,33 @@ public class GameActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
-        Integer money = extras.getInt("playerFunds");
+        startMoney = extras.getInt("playerFunds");
 
-        slotMachine.setPlayerFunds(money);
+        slotMachine.setPlayerFunds(startMoney);
         Integer playerMoney = slotMachine.checkPlayerFunds();
 
         playerFunds.setText(playerMoney.toString());
     }
 
-//    public void showHoldIfAvailable(){
-//        ArrayList<Wheel> wheels = slotMachine.getSlots();
-//        Wheel wheel1 = wheels.get(0);
-//        Wheel wheel2 = wheels.get(1);
-//        Wheel wheel3 = wheels.get(2);
-//
-//            if(wheel1.getHoldAvailable()){
-//               hold1.setVisibility(View.VISIBLE);
-//           } else { hold1.setVisibility(View.INVISIBLE);
-//            }
-//            if(wheel2.getHoldAvailable()){
-//                hold2.setVisibility(View.VISIBLE);
-//            } else { hold2.setVisibility(View.INVISIBLE);
-//            }
-//            if(wheel3.getHoldAvailable()){
-//                hold3.setVisibility(View.VISIBLE);
-//            } else { hold3.setVisibility(View.INVISIBLE);
-//            }
-//    }
+    public void showHoldIfAvailable(){
+        ArrayList<Wheel> wheels = slotMachine.getSlots();
+        Wheel wheel1 = wheels.get(0);
+        Wheel wheel2 = wheels.get(1);
+        Wheel wheel3 = wheels.get(2);
+
+            if(wheel1.getHoldAvailable()){
+               hold1.setVisibility(View.VISIBLE);
+           } else { hold1.setVisibility(View.INVISIBLE);
+            }
+            if(wheel2.getHoldAvailable()){
+                hold2.setVisibility(View.VISIBLE);
+            } else { hold2.setVisibility(View.INVISIBLE);
+            }
+            if(wheel3.getHoldAvailable()){
+                hold3.setVisibility(View.VISIBLE);
+            } else { hold3.setVisibility(View.INVISIBLE);
+            }
+    }
 
     public ArrayList<Symbols> changeImagesOnSpin(){
         ArrayList<Symbols> newLine = slotMachine.spin();
@@ -118,11 +119,18 @@ public class GameActivity extends AppCompatActivity {
             if (slotMachine.checkWin(newLine)) {
                 slotMachine.addPlayerFunds(value);
             }
-
             updatePlayerMoney();
-//        showHoldIfAvailable();
+            showHoldIfAvailable();
         } else {
             gameOver();
         }
+    }
+
+    public void onCollectButtonClicked(View button){
+        Integer endMoney = slotMachine.checkPlayerFunds();
+        Intent i = new Intent(this, CollectActivity.class);
+        i.putExtra("startMoney", this.startMoney);
+        i.putExtra("endMoney", endMoney);
+        startActivity(i);
     }
 }
