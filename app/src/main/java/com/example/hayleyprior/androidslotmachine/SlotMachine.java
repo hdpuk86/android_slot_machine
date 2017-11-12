@@ -93,10 +93,8 @@ public class SlotMachine {
         addPlayerFunds(-1);
         addToGameBank(1);
         ArrayList<Symbols> line = new ArrayList<>();
-        for(Wheel wheel: slots){
-            if(wheel.getPlayerHasHeld()){
-                 line.add(wheel.getCurrentSymbol());
-            } else line.add(wheel.spin());
+        for(Wheel wheel : slots){
+            line.add(wheel.spin());
         }
         return line;
     }

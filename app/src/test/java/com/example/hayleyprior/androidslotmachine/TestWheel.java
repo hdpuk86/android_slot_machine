@@ -110,4 +110,10 @@ public class TestWheel {
         assertEquals(Symbols.HIPPO, spy.getCurrentSymbol());
     }
 
+    @Test
+    public void returnsCurrentSymbolIfHeld() throws Exception {
+        wheel1.setCurrentSymbol(Symbols.SNAKE);
+        wheel1.setPlayerHasHeld(true);
+        assertEquals(Symbols.SNAKE, wheel1.spin());
+    }
 }

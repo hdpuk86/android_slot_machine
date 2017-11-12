@@ -85,11 +85,16 @@ public class Wheel {
     }
 
     public Symbols spin(){
-        Symbols newSymbol = getRandomSymbol();
-        setCurrentSymbol(newSymbol);
         randomAssignNudgeAvailable();
         randomAssignHoldAvailable();
-        return newSymbol;
+        if(playerHasHeld){
+            setCurrentSymbol(this.currentSymbol);
+            return this.currentSymbol;
+        } else {
+            Symbols newSymbol = getRandomSymbol();
+            setCurrentSymbol(newSymbol);
+            return newSymbol;
+        }
     }
 
     public Symbols nudge(){

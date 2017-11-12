@@ -1,6 +1,7 @@
 package com.example.hayleyprior.androidslotmachine;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -73,11 +74,14 @@ public class GameActivity extends AppCompatActivity {
                 hold3.setVisibility(View.VISIBLE);
             } else { hold3.setVisibility(View.INVISIBLE);
             }
+        hold1.setBackgroundColor(Color.parseColor("#FFFFF584"));
+        hold1.setTextColor(Color.parseColor("#FFFF0D00"));
     }
 
     public ArrayList<Symbols> changeImagesOnSpin(){
         ArrayList<Symbols> newLine = slotMachine.spin();
         ArrayList<String> lineImages = slotMachine.getLineImages(newLine);
+
         String image1 = lineImages.get(0);
         String image2 = lineImages.get(1);
         String image3 = lineImages.get(2);
@@ -132,5 +136,26 @@ public class GameActivity extends AppCompatActivity {
         i.putExtra("startMoney", this.startMoney);
         i.putExtra("endMoney", endMoney);
         startActivity(i);
+    }
+
+    public void onHold1ButtonClicked(View button){
+        Wheel wheel = slotMachine.getSlots().get(0);
+        Wheel wheel2 = slotMachine.getSlots().get(1);
+        Wheel wheel3 = slotMachine.getSlots().get(2);
+
+        wheel.setPlayerHasHeld(true);
+        wheel2.setPlayerHasHeld(false);
+        wheel3.setPlayerHasHeld(false);
+
+        hold1.setBackgroundColor(Color.parseColor("#FFFF0D00"));
+        hold1.setTextColor(Color.parseColor("#FFFFF584"));
+        hold2.setVisibility(View.INVISIBLE);
+        hold3.setVisibility(View.INVISIBLE);
+    }
+
+    public void resetHoldButtonsFalse(){
+        for(Wheel wheel : slotMachine.getSlots()){
+            wheel.setPlayerHasHeld(false);
+        }
     }
 }

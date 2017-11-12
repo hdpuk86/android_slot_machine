@@ -15,4 +15,8 @@
     <string name="collect_button">collect button</string>
     <string name="you_collected">You collected:</string>
     <string name="play_again">Play Again</string>
+    <string name="game_over">game over</string>
+    <string name="outOfMoney">Sorry  Out of Money</string>
+    <string name="add_more_money">Add More Money</string>
+    <string name="quit">Quit</string>
 </resources>

@@ -62,6 +62,7 @@
         android:layout_marginBottom="8dp"
         android:layout_marginStart="8dp"
         android:background="@color/nudge"
+        android:onClick="onHold1ButtonClicked"
         android:text="@string/hold"
         android:textColor="@color/nudgeBG"
         android:textSize="24sp"

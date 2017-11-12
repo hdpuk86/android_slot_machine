@@ -114,4 +114,12 @@ public class TestSlotMachine {
         slotMachine.addPlayerFunds(value);
         assertEquals(85, slotMachine.checkPlayerFunds());
     }
+
+    @Test
+    public void canHold() throws Exception {
+        slotMachine.getSlots().get(0).setCurrentSymbol(Symbols.LION);
+        slotMachine.getSlots().get(0).setPlayerHasHeld(true);
+        slotMachine.spin();
+        assertEquals(Symbols.LION, slotMachine.getSlots().get(0).getCurrentSymbol());
+    }
 }
