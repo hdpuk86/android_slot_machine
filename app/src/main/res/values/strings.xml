@@ -19,4 +19,5 @@
     <string name="outOfMoney">Sorry  Out of Money</string>
     <string name="add_more_money">Add More Money</string>
     <string name="quit">Quit</string>
+    <string name="winner">winner</string>
 </resources>

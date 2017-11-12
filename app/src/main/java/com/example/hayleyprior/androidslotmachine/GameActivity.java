@@ -2,10 +2,12 @@ package com.example.hayleyprior.androidslotmachine;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -19,12 +21,14 @@ public class GameActivity extends AppCompatActivity {
     private ImageView symbol1;
     private ImageView symbol2;
     private ImageView symbol3;
+    private ImageView winner;
     private Button nudge1;
     private Button nudge2;
     private Button nudge3;
     private Button hold1;
     private Button hold2;
     private Button hold3;
+    private ImageButton spin;
     private Integer startMoney;
 
 
@@ -39,12 +43,14 @@ public class GameActivity extends AppCompatActivity {
         symbol1 = findViewById(R.id.imageSymbol1);
         symbol2 = findViewById(R.id.imageSymbol2);
         symbol3 = findViewById(R.id.imageSymbol3);
+        winner = findViewById(R.id.winnerImage);
         nudge1 = findViewById(R.id.slot1Nudgebutton);
         nudge2 = findViewById(R.id.slot2Nudgebutton);
         nudge3 = findViewById(R.id.slot3Nudgebutton);
         hold1 = findViewById(R.id.slot1HoldButton);
         hold2 = findViewById(R.id.slot2HoldButton);
         hold3 = findViewById(R.id.slot3HoldButton);
+        spin = findViewById(R.id.spinButton);
 
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
@@ -118,10 +124,20 @@ public class GameActivity extends AppCompatActivity {
     public void onSpinButtonClicked(View button){
         if(!checkPlayerBust()) {
             ArrayList<Symbols> newLine = changeImagesOnSpin();
-            int value = slotMachine.getWinValue(newLine);
+            final int value = slotMachine.getWinValue(newLine);
 
             if (slotMachine.checkWin(newLine)) {
-                slotMachine.addPlayerFunds(value);
+                winner.setVisibility(View.VISIBLE);
+                spin.setVisibility(View.INVISIBLE);
+                final Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    public void run() {
+                        winner.setVisibility(View.INVISIBLE);
+                        spin.setVisibility(View.VISIBLE);
+                        slotMachine.addPlayerFunds(value);
+                        updatePlayerMoney();
+                    }
+                }, 2000);
             }
             updatePlayerMoney();
             showHoldIfAvailable();
