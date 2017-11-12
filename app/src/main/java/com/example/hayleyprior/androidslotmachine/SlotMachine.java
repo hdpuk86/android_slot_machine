@@ -25,6 +25,10 @@ public class SlotMachine {
         generateWheels();
     }
 
+    public ArrayList<Wheel> getSlots() {
+        return slots;
+    }
+
     public int getNumberOfWheels() {
         return numberOfWheels;
     }
