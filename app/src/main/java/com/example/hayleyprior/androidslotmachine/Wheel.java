@@ -21,7 +21,7 @@ public class Wheel {
         this.nudgeAvailable = false;
         this.playerHasHeld = false;
         generateSymbols();
-        this.currentSymbol = getRandomSymbol();
+        this.currentSymbol = null;
     }
 
     public Boolean getHoldAvailable() {
