@@ -17,7 +17,6 @@ public class GameActivity extends AppCompatActivity {
     private ImageView symbol1;
     private ImageView symbol2;
     private ImageView symbol3;
-    private Integer playerMoney;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

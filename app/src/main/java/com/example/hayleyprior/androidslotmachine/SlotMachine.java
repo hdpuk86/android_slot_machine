@@ -74,7 +74,7 @@ public class SlotMachine {
         for(Wheel wheel: slots){
             if(wheel.getPlayerHasHeld()){
                  line.add(wheel.getCurrentSymbol());
-            } else line.add(wheel.getRandomSymbol());
+            } else line.add(wheel.spin());
         }
         return line;
     }

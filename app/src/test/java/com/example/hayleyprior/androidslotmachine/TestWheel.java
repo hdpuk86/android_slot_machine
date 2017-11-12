@@ -14,10 +14,13 @@ import static org.junit.Assert.assertNotEquals;
 public class TestWheel {
 
     Wheel wheel1;
+    Wheel spy;
 
     @Before
     public void setUp() throws Exception {
         wheel1 = new Wheel();
+        spy = Mockito.spy(new Wheel());
+
     }
 
     @Test
@@ -32,7 +35,6 @@ public class TestWheel {
 
     @Test
     public void canGetRandomSymbol() throws Exception {
-        Wheel spy = Mockito.spy(new Wheel());
         Mockito.when(spy.randomInt(spy.countSymbols())).thenReturn(10);
         assertEquals(Symbols.SPIN, spy.getRandomSymbol());
     }
@@ -56,7 +58,6 @@ public class TestWheel {
 
     @Test
     public void nudgeAvailableIfNumIs10() throws Exception {
-        Wheel spy = Mockito.spy(new Wheel());
         Mockito.when(spy.randomInt(30)).thenReturn(10);
         spy.randomAssignNudgeAvailable();
         assertEquals(true, spy.getNudgeAvailable());
@@ -64,7 +65,6 @@ public class TestWheel {
 
     @Test
     public void nudgeNotAvailableIfNumIsNot10() throws Exception {
-        Wheel spy = Mockito.spy(new Wheel());
         Mockito.when(spy.randomInt(30)).thenReturn(8);
         spy.randomAssignNudgeAvailable();
         assertEquals(false, spy.getNudgeAvailable());
@@ -79,7 +79,6 @@ public class TestWheel {
 
     @Test
     public void holdAvailableIfNumIs10() throws Exception {
-        Wheel spy = Mockito.spy(new Wheel());
         Mockito.when(spy.randomInt(30)).thenReturn(10);
         spy.randomAssignHoldAvailable();
         assertEquals(true, spy.getHoldAvailable());
@@ -87,7 +86,6 @@ public class TestWheel {
 
     @Test
     public void holdNotAvailableIfNumIsNot10() throws Exception {
-        Wheel spy = Mockito.spy(new Wheel());
         Mockito.when(spy.randomInt(30)).thenReturn(8);
         spy.randomAssignHoldAvailable();
         assertEquals(false, spy.getHoldAvailable());
@@ -96,6 +94,20 @@ public class TestWheel {
     @Test
     public void canGetImageFromSymbolIndex() throws Exception {
         assertEquals("@drawable/lion", wheel1.getSymbolImageAtIndex(2));
+    }
+
+    @Test
+    public void returnsSymbolOnSpin() throws Exception {
+        Mockito.when(spy.randomInt(spy.countSymbols())).thenReturn(0);
+        assertEquals(Symbols.LEOPARD, spy.spin());
+    }
+
+    @Test
+    public void setsCurrentSymbolOnSpin() throws Exception {
+        spy.setCurrentSymbol(Symbols.ELEPHANT);
+        Mockito.when(spy.getRandomSymbol()).thenReturn(Symbols.HIPPO);
+        spy.spin();
+        assertEquals(Symbols.HIPPO, spy.getCurrentSymbol());
     }
 
 }
