@@ -1,5 +1,6 @@
 package com.example.hayleyprior.androidslotmachine;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 /**
@@ -69,6 +70,19 @@ public class SlotMachine {
 
     public void addPlayerFunds(int amount){
         this.playerFunds += amount;
+    }
+
+    public boolean checkWin(ArrayList<Symbols> line){
+        int counter = 0;
+        for(Symbols symbol : line){
+            if(symbol.equals(line.get(0))){
+                counter++;
+            }
+        }
+        if(counter == line.size()){
+            return true;
+        }
+        return false;
     }
 
     public ArrayList<Symbols> spin(){

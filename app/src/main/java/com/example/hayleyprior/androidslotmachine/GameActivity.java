@@ -54,27 +54,27 @@ public class GameActivity extends AppCompatActivity {
         playerFunds.setText(playerMoney.toString());
     }
 
-    public void showHoldIfAvailable(){
-        ArrayList<Wheel> wheels = slotMachine.getSlots();
-        Wheel wheel1 = wheels.get(0);
-        Wheel wheel2 = wheels.get(1);
-        Wheel wheel3 = wheels.get(2);
+//    public void showHoldIfAvailable(){
+//        ArrayList<Wheel> wheels = slotMachine.getSlots();
+//        Wheel wheel1 = wheels.get(0);
+//        Wheel wheel2 = wheels.get(1);
+//        Wheel wheel3 = wheels.get(2);
+//
+//            if(wheel1.getHoldAvailable()){
+//               hold1.setVisibility(View.VISIBLE);
+//           } else { hold1.setVisibility(View.INVISIBLE);
+//            }
+//            if(wheel2.getHoldAvailable()){
+//                hold2.setVisibility(View.VISIBLE);
+//            } else { hold2.setVisibility(View.INVISIBLE);
+//            }
+//            if(wheel3.getHoldAvailable()){
+//                hold3.setVisibility(View.VISIBLE);
+//            } else { hold3.setVisibility(View.INVISIBLE);
+//            }
+//    }
 
-            if(wheel1.getHoldAvailable()){
-               hold1.setVisibility(View.VISIBLE);
-           } else { hold1.setVisibility(View.INVISIBLE);
-            }
-            if(wheel2.getHoldAvailable()){
-                hold2.setVisibility(View.VISIBLE);
-            } else { hold2.setVisibility(View.INVISIBLE);
-            }
-            if(wheel3.getHoldAvailable()){
-                hold3.setVisibility(View.VISIBLE);
-            } else { hold3.setVisibility(View.INVISIBLE);
-            }
-    }
-
-    public void changeImagesOnSpin(){
+    public ArrayList<Symbols> changeImagesOnSpin(){
         ArrayList<Symbols> newLine = slotMachine.spin();
         ArrayList<String> lineImages = slotMachine.getLineImages(newLine);
         String image1 = lineImages.get(0);
@@ -88,6 +88,8 @@ public class GameActivity extends AppCompatActivity {
         symbol1.setImageResource(idImage1);
         symbol2.setImageResource(idImage2);
         symbol3.setImageResource(idImage3);
+
+        return newLine;
     }
 
     public void updatePlayerMoney(){
@@ -96,8 +98,13 @@ public class GameActivity extends AppCompatActivity {
     }
 
     public void onSpinButtonClicked(View button){
-        changeImagesOnSpin();
+        ArrayList<Symbols> newLine = changeImagesOnSpin();
+
+        if(slotMachine.checkWin(newLine)){
+            slotMachine.addPlayerFunds(newLine.get(0).getValue());
+        }
+
         updatePlayerMoney();
-        showHoldIfAvailable();
+//        showHoldIfAvailable();
     }
 }

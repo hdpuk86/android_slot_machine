@@ -75,4 +75,22 @@ public class TestSlotMachine {
         ArrayList<String> images = slotMachine.getLineImages(line);
         assertEquals("@drawable/lion", images.get(0));
     }
+
+    @Test
+    public void canCheckWinTrue() throws Exception {
+        ArrayList<Symbols> line = new ArrayList<>();
+        line.add(Symbols.RHINO);
+        line.add(Symbols.RHINO);
+        line.add(Symbols.RHINO);
+        assertEquals(true, slotMachine.checkWin(line));
+    }
+
+    @Test
+    public void canCheckWinFalse() throws Exception {
+        ArrayList<Symbols> line = new ArrayList<>();
+        line.add(Symbols.RHINO);
+        line.add(Symbols.RHINO);
+        line.add(Symbols.LION);
+        assertEquals(false, slotMachine.checkWin(line));
+    }
 }
