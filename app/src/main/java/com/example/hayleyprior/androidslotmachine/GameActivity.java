@@ -46,13 +46,13 @@ public class GameActivity extends AppCompatActivity {
         symbol2 = findViewById(R.id.imageSymbol2);
         symbol3 = findViewById(R.id.imageSymbol3);
         winner = findViewById(R.id.winnerImage);
+        spin = findViewById(R.id.spinButton);
         nudge1 = findViewById(R.id.nudgeButton1);
         nudge2 = findViewById(R.id.nudgeButton2);
         nudge3 = findViewById(R.id.nudgeButton3);
         hold1 = findViewById(R.id.holdButton1);
         hold2 = findViewById(R.id.holdButton2);
         hold3 = findViewById(R.id.holdButton3);
-        spin = findViewById(R.id.spinButton);
         ArrayList<Wheel> slots = slotMachine.getSlots();
         wheel1 = slots.get(0);
         wheel2 = slots.get(1);
@@ -68,31 +68,51 @@ public class GameActivity extends AppCompatActivity {
         playerFunds.setText(playerMoney.toString());
     }
 
-    public void showHoldIfAvailable(){
-            if(wheel1.getHoldAvailable()){
-                hold1.setBackgroundColor(Color.parseColor("#FFFFF584"));
-                hold1.setTextColor(Color.parseColor("#FFFF0D00"));
-                hold1.setVisibility(View.VISIBLE);
-            } else {
-                hold1.setVisibility(View.INVISIBLE);
-            }
-            if(wheel2.getHoldAvailable()){
-                hold2.setBackgroundColor(Color.parseColor("#FFFFF584"));
-                hold2.setTextColor(Color.parseColor("#FFFF0D00"));
-                hold2.setVisibility(View.VISIBLE);
-            } else {
-                hold2.setVisibility(View.INVISIBLE);
-            }
-            if(wheel3.getHoldAvailable()){
-                hold3.setBackgroundColor(Color.parseColor("#FFFFF584"));
-                hold3.setTextColor(Color.parseColor("#FFFF0D00"));
-                hold3.setVisibility(View.VISIBLE);
-            } else {
-                hold3.setVisibility(View.INVISIBLE);
-            }
+    //GENERAL GAME FUNCTIONS
+
+    public void updatePlayerMoney(){
+        Integer newPlayerFunds = slotMachine.checkPlayerFunds();
+        playerFunds.setText(newPlayerFunds.toString());
     }
 
-    public ArrayList<Symbols> changeImagesOnSpin(){
+    public boolean checkPlayerBust(){
+        int money = slotMachine.checkPlayerFunds();
+        if(money <= 0){
+            return true;
+        }
+        return false;
+    }
+
+    public void checkWin(){
+        ArrayList<Symbols> newLine = spin();
+        final int value = slotMachine.getWinValue(newLine);
+        if (slotMachine.checkWin(newLine)) {
+            win(value);
+        }
+    }
+
+    public void gameOver(){
+        Intent i = new Intent(this, GameOverActivity.class);
+        startActivity(i);
+    }
+
+    public void win(final int value){
+        winner.setVisibility(View.VISIBLE);
+        spin.setVisibility(View.INVISIBLE);
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            public void run() {
+                winner.setVisibility(View.INVISIBLE);
+                spin.setVisibility(View.VISIBLE);
+                slotMachine.addPlayerFunds(value);
+                updatePlayerMoney();
+            }
+        }, 2000);
+    }
+
+    //SPIN FUNCTIONS
+
+    public ArrayList<Symbols> spin(){
         ArrayList<Symbols> newLine = slotMachine.spin();
         ArrayList<String> lineImages = slotMachine.getLineImages(newLine);
 
@@ -111,42 +131,9 @@ public class GameActivity extends AppCompatActivity {
         return newLine;
     }
 
-    public void updatePlayerMoney(){
-        Integer newPlayerFunds = slotMachine.checkPlayerFunds();
-        playerFunds.setText(newPlayerFunds.toString());
-    }
-
-    public boolean checkPlayerBust(){
-        int money = slotMachine.checkPlayerFunds();
-        if(money <= 0){
-            return true;
-        }
-        return false;
-    }
-
-    public void gameOver(){
-        Intent i = new Intent(this, GameOverActivity.class);
-        startActivity(i);
-    }
-
     public void onSpinButtonClicked(View button){
         if(!checkPlayerBust()) {
-            ArrayList<Symbols> newLine = changeImagesOnSpin();
-            final int value = slotMachine.getWinValue(newLine);
-
-            if (slotMachine.checkWin(newLine)) {
-                winner.setVisibility(View.VISIBLE);
-                spin.setVisibility(View.INVISIBLE);
-                final Handler handler = new Handler();
-                handler.postDelayed(new Runnable() {
-                    public void run() {
-                        winner.setVisibility(View.INVISIBLE);
-                        spin.setVisibility(View.VISIBLE);
-                        slotMachine.addPlayerFunds(value);
-                        updatePlayerMoney();
-                    }
-                }, 2000);
-            }
+            checkWin();
             updatePlayerMoney();
             showHoldIfAvailable();
             resetHoldButtonsFalse();
@@ -155,12 +142,52 @@ public class GameActivity extends AppCompatActivity {
         }
     }
 
+    //COLLECT
+
     public void onCollectButtonClicked(View button){
         Integer endMoney = slotMachine.checkPlayerFunds();
         Intent i = new Intent(this, CollectActivity.class);
         i.putExtra("startMoney", this.startMoney);
         i.putExtra("endMoney", endMoney);
         startActivity(i);
+    }
+
+    //HOLD FUNCTIONS
+
+    public void showHoldWheel1(){
+        if(wheel1.getHoldAvailable()){
+            hold1.setBackgroundColor(Color.parseColor("#FFFFF584"));
+            hold1.setTextColor(Color.parseColor("#FFFF0D00"));
+            hold1.setVisibility(View.VISIBLE);
+        } else {
+            hold1.setVisibility(View.INVISIBLE);
+        }
+    }
+
+    public void showHoldWheel2(){
+        if(wheel2.getHoldAvailable()){
+            hold2.setBackgroundColor(Color.parseColor("#FFFFF584"));
+            hold2.setTextColor(Color.parseColor("#FFFF0D00"));
+            hold2.setVisibility(View.VISIBLE);
+        } else {
+            hold2.setVisibility(View.INVISIBLE);
+        }
+    }
+
+    public void showHoldWheel3(){
+        if(wheel3.getHoldAvailable()){
+            hold3.setBackgroundColor(Color.parseColor("#FFFFF584"));
+            hold3.setTextColor(Color.parseColor("#FFFF0D00"));
+            hold3.setVisibility(View.VISIBLE);
+        } else {
+            hold3.setVisibility(View.INVISIBLE);
+        }
+    }
+
+    public void showHoldIfAvailable(){
+        showHoldWheel1();
+        showHoldWheel2();
+        showHoldWheel3();
     }
 
     public void onHold1ButtonClicked(View button){
