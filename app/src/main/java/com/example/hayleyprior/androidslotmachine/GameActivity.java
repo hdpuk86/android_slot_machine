@@ -152,6 +152,14 @@ public class GameActivity extends AppCompatActivity {
         startActivity(i);
     }
 
+    //ADD MONEY
+
+    public void onAddMoneyClicked(View button){
+        Intent i = new Intent(this, MoneyActivity.class);
+        i.putExtra("currentFunds", slotMachine.checkPlayerFunds());
+        startActivity(i);
+    }
+
     //HOLD FUNCTIONS
 
     public void showHoldWheel1(){
