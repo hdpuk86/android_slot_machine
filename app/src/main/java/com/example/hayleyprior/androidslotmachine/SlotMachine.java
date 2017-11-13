@@ -14,11 +14,9 @@ public class SlotMachine {
     private int gameBank;
     private int playerFunds;
     private boolean quit;
-    private Wheel wheelType;
 
-    public SlotMachine(Wheel wheelType, int numberOfWheels) {
+    public SlotMachine(int numberOfWheels) {
         this.numberOfWheels = numberOfWheels;
-        this.wheelType = wheelType;
         this.slots = new ArrayList<>();
         this.gameBank = 0;
         this.playerFunds = 0;
@@ -63,8 +61,9 @@ public class SlotMachine {
     }
 
     public void generateWheels(){
-        for(int i = 0; i < getNumberOfWheels(); i ++){
-            this.slots.add(wheelType);
+        for(int i = 0; i <numberOfWheels; i++){
+            Wheel wheel = new Wheel();
+            this.slots.add(wheel);
         }
     }
 

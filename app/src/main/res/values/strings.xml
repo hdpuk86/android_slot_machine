@@ -20,4 +20,6 @@
     <string name="add_more_money">Add More Money</string>
     <string name="quit">Quit</string>
     <string name="winner">winner</string>
+    <string name="togglebutton">ToggleButton</string>
+
 </resources>

@@ -6,10 +6,10 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.ToggleButton;
 
 import java.util.ArrayList;
 
@@ -17,19 +17,22 @@ public class GameActivity extends AppCompatActivity {
 
     private TextView playerFunds;
     private SlotMachine slotMachine;
-    private Wheel wheel;
+    private Wheel wheel1;
+    private Wheel wheel2;
+    private Wheel wheel3;
     private ImageView symbol1;
     private ImageView symbol2;
     private ImageView symbol3;
     private ImageView winner;
-    private Button nudge1;
-    private Button nudge2;
-    private Button nudge3;
-    private Button hold1;
-    private Button hold2;
-    private Button hold3;
     private ImageButton spin;
+    private ToggleButton nudge1;
+    private ToggleButton nudge2;
+    private ToggleButton nudge3;
+    private ToggleButton hold1;
+    private ToggleButton hold2;
+    private ToggleButton hold3;
     private Integer startMoney;
+
 
 
     @Override
@@ -38,19 +41,22 @@ public class GameActivity extends AppCompatActivity {
         setContentView(R.layout.activity_game);
 
         playerFunds = findViewById(R.id.playerFundsText);
-        wheel = new Wheel();
-        slotMachine = new SlotMachine(wheel, 3);
+        slotMachine = new SlotMachine(3);
         symbol1 = findViewById(R.id.imageSymbol1);
         symbol2 = findViewById(R.id.imageSymbol2);
         symbol3 = findViewById(R.id.imageSymbol3);
         winner = findViewById(R.id.winnerImage);
-        nudge1 = findViewById(R.id.slot1Nudgebutton);
-        nudge2 = findViewById(R.id.slot2Nudgebutton);
-        nudge3 = findViewById(R.id.slot3Nudgebutton);
-        hold1 = findViewById(R.id.slot1HoldButton);
-        hold2 = findViewById(R.id.slot2HoldButton);
-        hold3 = findViewById(R.id.slot3HoldButton);
+        nudge1 = findViewById(R.id.nudgeButton1);
+        nudge2 = findViewById(R.id.nudgeButton2);
+        nudge3 = findViewById(R.id.nudgeButton3);
+        hold1 = findViewById(R.id.holdButton1);
+        hold2 = findViewById(R.id.holdButton2);
+        hold3 = findViewById(R.id.holdButton3);
         spin = findViewById(R.id.spinButton);
+        ArrayList<Wheel> slots = slotMachine.getSlots();
+        wheel1 = slots.get(0);
+        wheel2 = slots.get(1);
+        wheel3 = slots.get(2);
 
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
@@ -63,25 +69,27 @@ public class GameActivity extends AppCompatActivity {
     }
 
     public void showHoldIfAvailable(){
-        ArrayList<Wheel> wheels = slotMachine.getSlots();
-        Wheel wheel1 = wheels.get(0);
-        Wheel wheel2 = wheels.get(1);
-        Wheel wheel3 = wheels.get(2);
-
             if(wheel1.getHoldAvailable()){
-               hold1.setVisibility(View.VISIBLE);
-           } else { hold1.setVisibility(View.INVISIBLE);
+                hold1.setBackgroundColor(Color.parseColor("#FFFFF584"));
+                hold1.setTextColor(Color.parseColor("#FFFF0D00"));
+                hold1.setVisibility(View.VISIBLE);
+           } else {
+                hold1.setVisibility(View.INVISIBLE);
             }
             if(wheel2.getHoldAvailable()){
+                hold2.setBackgroundColor(Color.parseColor("#FFFFF584"));
+                hold2.setTextColor(Color.parseColor("#FFFF0D00"));
                 hold2.setVisibility(View.VISIBLE);
-            } else { hold2.setVisibility(View.INVISIBLE);
+            } else {
+                hold2.setVisibility(View.INVISIBLE);
             }
             if(wheel3.getHoldAvailable()){
+                hold3.setBackgroundColor(Color.parseColor("#FFFFF584"));
+                hold3.setTextColor(Color.parseColor("#FFFF0D00"));
                 hold3.setVisibility(View.VISIBLE);
-            } else { hold3.setVisibility(View.INVISIBLE);
+            } else {
+                hold3.setVisibility(View.INVISIBLE);
             }
-        hold1.setBackgroundColor(Color.parseColor("#FFFFF584"));
-        hold1.setTextColor(Color.parseColor("#FFFF0D00"));
     }
 
     public ArrayList<Symbols> changeImagesOnSpin(){
@@ -141,6 +149,7 @@ public class GameActivity extends AppCompatActivity {
             }
             updatePlayerMoney();
             showHoldIfAvailable();
+            resetHoldButtonsFalse();
         } else {
             gameOver();
         }
@@ -155,18 +164,12 @@ public class GameActivity extends AppCompatActivity {
     }
 
     public void onHold1ButtonClicked(View button){
-        Wheel wheel = slotMachine.getSlots().get(0);
-        Wheel wheel2 = slotMachine.getSlots().get(1);
-        Wheel wheel3 = slotMachine.getSlots().get(2);
-
-        wheel.setPlayerHasHeld(true);
-        wheel2.setPlayerHasHeld(false);
-        wheel3.setPlayerHasHeld(false);
-
-        hold1.setBackgroundColor(Color.parseColor("#FFFF0D00"));
-        hold1.setTextColor(Color.parseColor("#FFFFF584"));
-        hold2.setVisibility(View.INVISIBLE);
-        hold3.setVisibility(View.INVISIBLE);
+        boolean hold = ((ToggleButton)button).isChecked();
+        if(hold) {
+            wheel1.setPlayerHasHeld(true);
+            hold1.setBackgroundColor(Color.parseColor("#FFFF0D00"));
+            hold1.setTextColor(Color.parseColor("#FFFFF584"));
+        }
     }
 
     public void resetHoldButtonsFalse(){

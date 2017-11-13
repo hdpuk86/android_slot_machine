@@ -7,99 +7,6 @@
     android:background="@drawable/gamebackground"
     tools:context="com.example.hayleyprior.androidslotmachine.GameActivity">
 
-    <Button
-        android:id="@+id/slot1Nudgebutton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:background="@color/nudgeBG"
-        android:fadingEdge="none"
-        android:text="@string/nudge"
-        android:textColor="@color/nudge"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:visibility="invisible"
-        app:layout_constraintStart_toStartOf="@+id/slotMachineImage"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/slot2Nudgebutton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:background="@color/nudgeBG"
-        android:text="@string/nudge"
-        android:textColor="@color/nudge"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:visibility="invisible"
-        app:layout_constraintEnd_toStartOf="@+id/slot3Nudgebutton"
-        app:layout_constraintStart_toEndOf="@+id/slot1Nudgebutton"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/slot3Nudgebutton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginTop="8dp"
-        android:background="@color/nudgeBG"
-        android:text="@string/nudge"
-        android:textColor="@color/nudge"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:visibility="invisible"
-        app:layout_constraintEnd_toEndOf="@+id/slotMachineImage"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/slot1HoldButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginStart="8dp"
-        android:background="@color/nudge"
-        android:onClick="onHold1ButtonClicked"
-        android:text="@string/hold"
-        android:textColor="@color/nudgeBG"
-        android:textSize="24sp"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/slotMachineImage" />
-
-    <Button
-        android:id="@+id/slot2HoldButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:background="@color/nudge"
-        android:text="@string/hold"
-        android:textColor="@color/nudgeBG"
-        android:textSize="24sp"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/slot3HoldButton"
-        app:layout_constraintStart_toEndOf="@+id/slot1HoldButton" />
-
-    <Button
-        android:id="@+id/slot3HoldButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:background="@color/nudge"
-        android:text="@string/hold"
-        android:textColor="@color/nudgeBG"
-        android:textSize="24sp"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/slotMachineImage" />
-
     <ImageView
         android:id="@+id/whiteSlotBg"
         android:layout_width="385dp"
@@ -116,7 +23,7 @@
         app:srcCompat="@android:color/background_light" />
 
     <ImageView
-        android:id="@+id/imageSymbol2"
+        android:id="@+id/imageSymbol1"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginBottom="8dp"
@@ -130,7 +37,7 @@
         app:srcCompat="@drawable/buffalo" />
 
     <ImageView
-        android:id="@+id/imageSymbol1"
+        android:id="@+id/imageSymbol2"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginBottom="8dp"
@@ -140,7 +47,8 @@
         android:contentDescription="@string/firstSymbol"
         app:layout_constraintBottom_toBottomOf="@+id/whiteSlotBg"
         app:layout_constraintEnd_toStartOf="@+id/imageSymbol3"
-        app:layout_constraintStart_toEndOf="@+id/imageSymbol2"
+        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintStart_toEndOf="@+id/imageSymbol1"
         app:layout_constraintTop_toTopOf="@+id/whiteSlotBg"
         app:layout_constraintVertical_bias="0.477"
         app:srcCompat="@drawable/elephant" />
@@ -248,6 +156,103 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/winner" />
+
+    <ToggleButton
+        android:id="@+id/nudgeButton1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/togglebutton"
+        android:textOff="@string/nudge"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/slotMachineImage"
+        app:layout_constraintStart_toStartOf="@+id/slotMachineImage"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ToggleButton
+        android:id="@+id/nudgeButton2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/togglebutton"
+        android:textOff="@string/nudge"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/slotMachineImage"
+        app:layout_constraintEnd_toStartOf="@+id/nudgeButton3"
+        app:layout_constraintHorizontal_bias="0.47"
+        app:layout_constraintStart_toEndOf="@+id/nudgeButton1"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ToggleButton
+        android:id="@+id/nudgeButton3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/togglebutton"
+        android:textOff="@string/nudge"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/slotMachineImage"
+        app:layout_constraintEnd_toEndOf="@+id/slotMachineImage"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ToggleButton
+        android:id="@+id/holdButton1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="8dp"
+        android:checked="false"
+        android:onClick="onHold1ButtonClicked"
+        android:text="@string/togglebutton"
+        android:textOff="@string/hold"
+        android:textOn="@string/hold"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/slotMachineImage"
+        app:layout_constraintTop_toBottomOf="@+id/slotMachineImage"
+        app:layout_constraintVertical_bias="0.444" />
+
+    <ToggleButton
+        android:id="@+id/holdButton2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/togglebutton"
+        android:textOff="@string/hold"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/holdButton3"
+        app:layout_constraintStart_toEndOf="@+id/holdButton1"
+        app:layout_constraintTop_toBottomOf="@+id/slotMachineImage" />
+
+    <ToggleButton
+        android:id="@+id/holdButton3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/togglebutton"
+        android:textOff="@string/hold"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/slotMachineImage"
+        app:layout_constraintTop_toBottomOf="@+id/slotMachineImage"
+        app:layout_constraintVertical_bias="0.444" />
 
 
 </android.support.constraint.ConstraintLayout>
