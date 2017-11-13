@@ -13,23 +13,17 @@ public class SlotMachine {
     private ArrayList<Wheel> slots;
     private int gameBank;
     private int playerFunds;
-    private boolean quit;
 
     public SlotMachine(int numberOfWheels) {
         this.numberOfWheels = numberOfWheels;
         this.slots = new ArrayList<>();
         this.gameBank = 0;
         this.playerFunds = 0;
-        this.quit = false;
         generateWheels();
     }
 
     public ArrayList<Wheel> getSlots() {
         return slots;
-    }
-
-    public int getNumberOfWheels() {
-        return numberOfWheels;
     }
 
     public int checkGameBank() {
@@ -40,20 +34,12 @@ public class SlotMachine {
         return playerFunds;
     }
 
-    public boolean isQuit() {
-        return quit;
-    }
-
     public void setPlayerFunds(int amount) {
         this.playerFunds = amount;
     }
 
     public void addToGameBank(int amount) {
         this.gameBank += amount;
-    }
-
-    public void setQuit(boolean quit) {
-        this.quit = quit;
     }
 
     public int countSlots(){

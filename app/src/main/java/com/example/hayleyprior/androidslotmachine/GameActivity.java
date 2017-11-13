@@ -330,8 +330,6 @@ public class GameActivity extends AppCompatActivity {
         String bottomImage = bottomImages.get(0);
         int bottomID = getResources().getIdentifier(bottomImage, "drawable", getPackageName());
         wheel1Bottom.setImageResource(bottomID);
-
-        wheel1.setNudgeAvailable(false);
     }
 
     public void onNudge2Clicked(View button){
@@ -355,11 +353,9 @@ public class GameActivity extends AppCompatActivity {
         String bottomImage = bottomImages.get(1);
         int bottomID = getResources().getIdentifier(bottomImage, "drawable", getPackageName());
         wheel2Bottom.setImageResource(bottomID);
-
-        wheel2.setNudgeAvailable(false);
     }
 
-    public void onNudge3Clicked(View button){
+    public void onNudge3Clicked(View button) {
         showNudgeWheel3();
         wheel3.nudge();
 
@@ -380,8 +376,6 @@ public class GameActivity extends AppCompatActivity {
         String bottomImage = bottomImages.get(2);
         int bottomID = getResources().getIdentifier(bottomImage, "drawable", getPackageName());
         wheel3Bottom.setImageResource(bottomID);
-
-        wheel3.setNudgeAvailable(false);
     }
 
     public void resetNudgesFalse(){

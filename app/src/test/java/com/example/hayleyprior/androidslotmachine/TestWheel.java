@@ -70,13 +70,6 @@ public class TestWheel {
     }
 
     @Test
-    public void nudgeNotAvailableAfterNudging() throws Exception {
-        wheel1.setNudgeAvailable(true);
-        wheel1.nudge();
-        assertEquals(false, wheel1.getNudgeAvailable());
-    }
-
-    @Test
     public void holdAvailableIfNumIs10() throws Exception {
         Mockito.when(spy.randomInt(30)).thenReturn(10);
         spy.randomAssignHoldAvailable();

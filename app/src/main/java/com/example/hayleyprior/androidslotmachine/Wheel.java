@@ -117,7 +117,7 @@ public class Wheel {
     public Symbols spin(){
         randomAssignNudgeAvailable();
         randomAssignHoldAvailable();
-        if(playerHasHeld){
+        if(getPlayerHasHeld()){
             setCurrentSymbol(this.currentSymbol);
             return this.currentSymbol;
         } else {
