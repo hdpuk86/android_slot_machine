@@ -98,6 +98,15 @@ public class SlotMachine {
         return line;
     }
 
+    public ArrayList<Symbols> getCurrentSymbols(){
+        ArrayList<Symbols> currentSymbols = new ArrayList<>();
+            for(Wheel wheel : this.slots){
+                Symbols symbol = wheel.getCurrentSymbol();
+                currentSymbols.add(symbol);
+            }
+        return currentSymbols;
+    }
+
     public String getSymbolImage(Symbols symbol){
         return symbol.getImageName();
     }

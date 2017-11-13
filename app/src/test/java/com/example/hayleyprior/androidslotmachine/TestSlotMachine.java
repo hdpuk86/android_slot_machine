@@ -118,4 +118,16 @@ public class TestSlotMachine {
         slotMachine.spin();
         assertEquals(Symbols.LION, slotMachine.getSlots().get(0).getCurrentSymbol());
     }
+
+    @Test
+    public void canGetCurrentSymbols() throws Exception {
+        for(Wheel wheel : slotMachine.getSlots()){
+            wheel.setCurrentSymbol(Symbols.BUFFALO);
+        }
+        ArrayList<Symbols> line = slotMachine.getCurrentSymbols();
+        assertEquals(Symbols.BUFFALO, line.get(0));
+        assertEquals(Symbols.BUFFALO, line.get(1));
+        assertEquals(Symbols.BUFFALO, line.get(2));
+
+    }
 }

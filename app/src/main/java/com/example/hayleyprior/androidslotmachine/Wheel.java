@@ -104,7 +104,6 @@ public class Wheel {
             int newIndex = getSymbolIndex(this.currentSymbol) - 1;
             setCurrentSymbol(getSymbolAtIndex(newIndex));
         }
-        setNudgeAvailable(false);
         return getCurrentSymbol();
     }
 

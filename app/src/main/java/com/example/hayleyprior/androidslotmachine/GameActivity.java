@@ -134,6 +134,8 @@ public class GameActivity extends AppCompatActivity {
             checkWin();
             updatePlayerMoney();
             showHoldIfAvailable();
+            showNudgeIfAvailable();
+            resetNudgesFalse();
             resetHoldButtonsFalse();
         } else {
             gameOver();
@@ -223,6 +225,76 @@ public class GameActivity extends AppCompatActivity {
 
     //NUDGE FUNCTIONS
 
+    public void showNudgeWheel1(){
+        if(wheel1.getNudgeAvailable()){
+            nudge1.setVisibility(View.VISIBLE);
+        } else {
+            nudge1.setVisibility(View.INVISIBLE
+            );
+        }
+    }
 
+    public void showNudgeWheel2(){
+        if(wheel2.getNudgeAvailable()){
+            nudge2.setVisibility(View.VISIBLE);
+        } else {
+            nudge2.setVisibility(View.INVISIBLE
+            );
+        }
+    }
+
+    public void showNudgeWheel3(){
+        if(wheel3.getNudgeAvailable()){
+            nudge3.setVisibility(View.VISIBLE);
+        } else {
+            nudge3.setVisibility(View.INVISIBLE
+            );
+        }
+    }
+
+    public void showNudgeIfAvailable(){
+        showNudgeWheel1();
+        showNudgeWheel2();
+        showNudgeWheel3();
+    }
+
+    public void onNudge1Clicked(View button){
+        showNudgeWheel1();
+        wheel1.nudge();
+        ArrayList<Symbols> currentLine = slotMachine.getCurrentSymbols();
+        ArrayList<String> lineImages = slotMachine.getLineImages(currentLine);
+        String image = lineImages.get(0);
+        int imageID = getResources().getIdentifier(image, "drawable", getPackageName());
+        symbol1.setImageResource(imageID);
+        wheel1.setNudgeAvailable(false);
+    }
+
+    public void onNudge2Clicked(View button){
+        showNudgeWheel2();
+        wheel2.nudge();
+        ArrayList<Symbols> currentLine = slotMachine.getCurrentSymbols();
+        ArrayList<String> lineImages = slotMachine.getLineImages(currentLine);
+        String image = lineImages.get(1);
+        int imageID = getResources().getIdentifier(image, "drawable", getPackageName());
+        symbol2.setImageResource(imageID);
+        wheel2.setNudgeAvailable(false);
+    }
+
+    public void onNudge3Clicked(View button){
+        showNudgeWheel3();
+        wheel3.nudge();
+        ArrayList<Symbols> currentLine = slotMachine.getCurrentSymbols();
+        ArrayList<String> lineImages = slotMachine.getLineImages(currentLine);
+        String image = lineImages.get(2);
+        int imageID = getResources().getIdentifier(image, "drawable", getPackageName());
+        symbol3.setImageResource(imageID);
+        wheel3.setNudgeAvailable(false);
+    }
+
+    public void resetNudgesFalse(){
+        for(Wheel wheel : slotMachine.getSlots()){
+            wheel.setNudgeAvailable(false);
+        }
+    }
 
 }
