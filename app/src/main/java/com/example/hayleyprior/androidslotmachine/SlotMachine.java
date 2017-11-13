@@ -107,6 +107,24 @@ public class SlotMachine {
         return currentSymbols;
     }
 
+    public ArrayList<Symbols> getTopLineSymbols(){
+        ArrayList<Symbols> topSymbols = new ArrayList<>();
+        for(Wheel wheel : getSlots()){
+            Symbols top = wheel.getTopSymbol();
+            topSymbols.add(top);
+        }
+        return topSymbols;
+    }
+
+    public ArrayList<Symbols> getBottomLineSymbols(){
+        ArrayList<Symbols> bottomSymbols = new ArrayList<>();
+        for(Wheel wheel : getSlots()){
+            Symbols bottom = wheel.getBottomSymbol();
+            bottomSymbols.add(bottom);
+        }
+        return bottomSymbols;
+    }
+
     public String getSymbolImage(Symbols symbol){
         return symbol.getImageName();
     }
@@ -119,5 +137,7 @@ public class SlotMachine {
         }
         return images;
     }
+
+
 
 }

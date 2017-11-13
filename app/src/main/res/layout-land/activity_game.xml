@@ -32,7 +32,7 @@
         android:scaleType="fitXY"
         app:layout_constraintBottom_toTopOf="@+id/imageSymbol1"
         app:layout_constraintStart_toStartOf="@+id/slotMachineImage"
-        app:layout_constraintTop_toBottomOf="@+id/nudgeButton2"
+        app:layout_constraintTop_toTopOf="@+id/slotMachineImage"
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/lion" />
 
@@ -94,8 +94,7 @@
         app:layout_constraintEnd_toStartOf="@+id/wheel3TopImage"
         app:layout_constraintHorizontal_bias="0.463"
         app:layout_constraintStart_toEndOf="@+id/wheel1TopImage"
-        app:layout_constraintTop_toBottomOf="@+id/nudgeButton2"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintTop_toTopOf="@+id/slotMachineImage"
         app:srcCompat="@drawable/buffalo" />
 
     <ImageView
@@ -139,7 +138,7 @@
         android:scaleType="fitXY"
         app:layout_constraintBottom_toTopOf="@+id/imageSymbol3"
         app:layout_constraintEnd_toEndOf="@+id/slotMachineImage"
-        app:layout_constraintTop_toBottomOf="@+id/nudgeButton2"
+        app:layout_constraintTop_toTopOf="@+id/slotMachineImage"
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/alligator" />
 

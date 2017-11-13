@@ -84,6 +84,36 @@ public class Wheel {
         return getSymbolAtIndex(randomIndex);
     }
 
+    public Symbols getPreviousSymbol(Symbols currentSymbol){
+        int currentIndex = getSymbolIndex(currentSymbol);
+        if(currentIndex == 0){
+            int topIndex = countSymbols() - 1;
+            return getSymbolAtIndex(topIndex);
+
+        } else {
+            int topIndex = currentIndex - 1;
+            return getSymbolAtIndex(topIndex);
+        }
+    }
+
+    public Symbols getTopSymbol(){
+        Symbols currentSymbol = getCurrentSymbol();
+        return getPreviousSymbol(currentSymbol);
+    }
+
+    public Symbols getBottomSymbol(){
+        Symbols currentSymbol = getCurrentSymbol();
+        int currentIndex = getSymbolIndex(currentSymbol);
+        if(currentIndex == countSymbols() - 1){
+            int bottomIndex = 0;
+            return getSymbolAtIndex(bottomIndex);
+
+        } else {
+            int bottomIndex = currentIndex + 1;
+            return getSymbolAtIndex(bottomIndex);
+        }
+    }
+
     public Symbols spin(){
         randomAssignNudgeAvailable();
         randomAssignHoldAvailable();

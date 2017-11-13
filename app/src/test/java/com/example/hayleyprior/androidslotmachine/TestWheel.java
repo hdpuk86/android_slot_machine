@@ -115,4 +115,16 @@ public class TestWheel {
         wheel1.setPlayerHasHeld(true);
         assertEquals(Symbols.SNAKE, wheel1.spin());
     }
+
+    @Test
+    public void canReturnTopSymbol() throws Exception {
+        wheel1.setCurrentSymbol(Symbols.SNAKE);
+        assertEquals(Symbols.HIPPO, wheel1.getTopSymbol());
+    }
+
+    @Test
+    public void canReturnTopSymbolFromIndex0() throws Exception {
+        wheel1.setCurrentSymbol(Symbols.LEOPARD);
+        assertEquals(Symbols.SPIN, wheel1.getTopSymbol());
+    }
 }

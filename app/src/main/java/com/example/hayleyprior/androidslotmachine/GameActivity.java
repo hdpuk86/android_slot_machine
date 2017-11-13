@@ -23,6 +23,12 @@ public class GameActivity extends AppCompatActivity {
     private ImageView symbol1;
     private ImageView symbol2;
     private ImageView symbol3;
+    private ImageView wheel1Top;
+    private ImageView wheel2Top;
+    private ImageView wheel3Top;
+    private ImageView wheel1Bottom;
+    private ImageView wheel2Bottom;
+    private ImageView wheel3Bottom;
     private ImageView winnerImage;
     private ImageButton spinButton;
     private ToggleButton nudge1;
@@ -44,6 +50,12 @@ public class GameActivity extends AppCompatActivity {
         symbol1 = findViewById(R.id.imageSymbol1);
         symbol2 = findViewById(R.id.imageSymbol2);
         symbol3 = findViewById(R.id.imageSymbol3);
+        wheel1Top = findViewById(R.id.wheel1TopImage);
+        wheel2Top = findViewById(R.id.wheel2TopImage);
+        wheel3Top = findViewById(R.id.wheel3TopImage);
+        wheel1Bottom = findViewById(R.id.wheel1BottomImage);
+        wheel2Bottom = findViewById(R.id.wheel2BottomImage);
+        wheel3Bottom = findViewById(R.id.wheel3BottomImage);
         winnerImage = findViewById(R.id.winnerImage);
         spinButton = findViewById(R.id.spinButton);
         nudge1 = findViewById(R.id.nudgeButton1);
@@ -68,10 +80,6 @@ public class GameActivity extends AppCompatActivity {
     }
 
     //GENERAL GAME FUNCTIONS
-
-    public void hideAll(){
-
-    }
 
     public void updatePlayerMoney(){
         Integer newPlayerFunds = slotMachine.checkPlayerFunds();
@@ -117,21 +125,51 @@ public class GameActivity extends AppCompatActivity {
 
     public ArrayList<Symbols> spin(){
         ArrayList<Symbols> newLine = slotMachine.spin();
-        ArrayList<String> lineImages = slotMachine.getLineImages(newLine);
+        updateCurrentLine(newLine);
+        updateTopLine();
+        updateBottomLine();
+        return newLine;
+    }
 
+    public void updateCurrentLine(ArrayList<Symbols> newLine){
+        ArrayList<String> lineImages = slotMachine.getLineImages(newLine);
         String image1 = lineImages.get(0);
         String image2 = lineImages.get(1);
         String image3 = lineImages.get(2);
-
         int idImage1 = getResources().getIdentifier(image1, "drawable", getPackageName());
         int idImage2 = getResources().getIdentifier(image2, "drawable", getPackageName());
         int idImage3 = getResources().getIdentifier(image3, "drawable", getPackageName());
-
         symbol1.setImageResource(idImage1);
         symbol2.setImageResource(idImage2);
         symbol3.setImageResource(idImage3);
+    }
 
-        return newLine;
+    public void updateTopLine(){
+        ArrayList<Symbols> topLine = slotMachine.getTopLineSymbols();
+        ArrayList<String> lineImages = slotMachine.getLineImages(topLine);
+        String image1 = lineImages.get(0);
+        String image2 = lineImages.get(1);
+        String image3 = lineImages.get(2);
+        int idImage1 = getResources().getIdentifier(image1, "drawable", getPackageName());
+        int idImage2 = getResources().getIdentifier(image2, "drawable", getPackageName());
+        int idImage3 = getResources().getIdentifier(image3, "drawable", getPackageName());
+        wheel1Top.setImageResource(idImage1);
+        wheel2Top.setImageResource(idImage2);
+        wheel3Top.setImageResource(idImage3);
+    }
+
+    public void updateBottomLine(){
+        ArrayList<Symbols> bottomLine = slotMachine.getBottomLineSymbols();
+        ArrayList<String> lineImages = slotMachine.getLineImages(bottomLine);
+        String image1 = lineImages.get(0);
+        String image2 = lineImages.get(1);
+        String image3 = lineImages.get(2);
+        int idImage1 = getResources().getIdentifier(image1, "drawable", getPackageName());
+        int idImage2 = getResources().getIdentifier(image2, "drawable", getPackageName());
+        int idImage3 = getResources().getIdentifier(image3, "drawable", getPackageName());
+        wheel1Bottom.setImageResource(idImage1);
+        wheel2Bottom.setImageResource(idImage2);
+        wheel3Bottom.setImageResource(idImage3);
     }
 
     public void onSpinButtonClicked(View button){
@@ -274,33 +312,75 @@ public class GameActivity extends AppCompatActivity {
     public void onNudge1Clicked(View button){
         showNudgeWheel1();
         wheel1.nudge();
+
         ArrayList<Symbols> currentLine = slotMachine.getCurrentSymbols();
         ArrayList<String> lineImages = slotMachine.getLineImages(currentLine);
         String image = lineImages.get(0);
         int imageID = getResources().getIdentifier(image, "drawable", getPackageName());
         symbol1.setImageResource(imageID);
+
+        ArrayList<Symbols> topLine = slotMachine.getTopLineSymbols();
+        ArrayList<String> topImages = slotMachine.getLineImages(topLine);
+        String topImage = topImages.get(0);
+        int topID = getResources().getIdentifier(topImage, "drawable", getPackageName());
+        wheel1Top.setImageResource(topID);
+
+        ArrayList<Symbols> bottomLine = slotMachine.getBottomLineSymbols();
+        ArrayList<String> bottomImages = slotMachine.getLineImages(bottomLine);
+        String bottomImage = bottomImages.get(0);
+        int bottomID = getResources().getIdentifier(bottomImage, "drawable", getPackageName());
+        wheel1Bottom.setImageResource(bottomID);
+
         wheel1.setNudgeAvailable(false);
     }
 
     public void onNudge2Clicked(View button){
         showNudgeWheel2();
         wheel2.nudge();
+
         ArrayList<Symbols> currentLine = slotMachine.getCurrentSymbols();
         ArrayList<String> lineImages = slotMachine.getLineImages(currentLine);
         String image = lineImages.get(1);
         int imageID = getResources().getIdentifier(image, "drawable", getPackageName());
         symbol2.setImageResource(imageID);
+
+        ArrayList<Symbols> topLine = slotMachine.getTopLineSymbols();
+        ArrayList<String> topImages = slotMachine.getLineImages(topLine);
+        String topImage = topImages.get(1);
+        int topID = getResources().getIdentifier(topImage, "drawable", getPackageName());
+        wheel2Top.setImageResource(topID);
+
+        ArrayList<Symbols> bottomLine = slotMachine.getBottomLineSymbols();
+        ArrayList<String> bottomImages = slotMachine.getLineImages(bottomLine);
+        String bottomImage = bottomImages.get(1);
+        int bottomID = getResources().getIdentifier(bottomImage, "drawable", getPackageName());
+        wheel2Bottom.setImageResource(bottomID);
+
         wheel2.setNudgeAvailable(false);
     }
 
     public void onNudge3Clicked(View button){
         showNudgeWheel3();
         wheel3.nudge();
+
         ArrayList<Symbols> currentLine = slotMachine.getCurrentSymbols();
         ArrayList<String> lineImages = slotMachine.getLineImages(currentLine);
         String image = lineImages.get(2);
         int imageID = getResources().getIdentifier(image, "drawable", getPackageName());
         symbol3.setImageResource(imageID);
+
+        ArrayList<Symbols> topLine = slotMachine.getTopLineSymbols();
+        ArrayList<String> topImages = slotMachine.getLineImages(topLine);
+        String topImage = topImages.get(2);
+        int topID = getResources().getIdentifier(topImage, "drawable", getPackageName());
+        wheel3Top.setImageResource(topID);
+
+        ArrayList<Symbols> bottomLine = slotMachine.getBottomLineSymbols();
+        ArrayList<String> bottomImages = slotMachine.getLineImages(bottomLine);
+        String bottomImage = bottomImages.get(2);
+        int bottomID = getResources().getIdentifier(bottomImage, "drawable", getPackageName());
+        wheel3Bottom.setImageResource(bottomID);
+
         wheel3.setNudgeAvailable(false);
     }
 
