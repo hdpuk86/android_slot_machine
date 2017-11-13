@@ -21,5 +21,6 @@
     <string name="quit">Quit</string>
     <string name="winner">winner</string>
     <string name="togglebutton">ToggleButton</string>
+    <string name="add_money">add money</string>
 
 </resources>

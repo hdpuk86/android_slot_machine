@@ -33,6 +33,7 @@ public class GameActivity extends AppCompatActivity {
     private ToggleButton hold3;
     private Integer startMoney;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,6 +68,10 @@ public class GameActivity extends AppCompatActivity {
     }
 
     //GENERAL GAME FUNCTIONS
+
+    public void hideAll(){
+
+    }
 
     public void updatePlayerMoney(){
         Integer newPlayerFunds = slotMachine.checkPlayerFunds();
