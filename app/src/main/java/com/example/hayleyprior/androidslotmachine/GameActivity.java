@@ -23,8 +23,8 @@ public class GameActivity extends AppCompatActivity {
     private ImageView symbol1;
     private ImageView symbol2;
     private ImageView symbol3;
-    private ImageView winner;
-    private ImageButton spin;
+    private ImageView winnerImage;
+    private ImageButton spinButton;
     private ToggleButton nudge1;
     private ToggleButton nudge2;
     private ToggleButton nudge3;
@@ -32,8 +32,6 @@ public class GameActivity extends AppCompatActivity {
     private ToggleButton hold2;
     private ToggleButton hold3;
     private Integer startMoney;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,8 +43,8 @@ public class GameActivity extends AppCompatActivity {
         symbol1 = findViewById(R.id.imageSymbol1);
         symbol2 = findViewById(R.id.imageSymbol2);
         symbol3 = findViewById(R.id.imageSymbol3);
-        winner = findViewById(R.id.winnerImage);
-        spin = findViewById(R.id.spinButton);
+        winnerImage = findViewById(R.id.winnerImage);
+        spinButton = findViewById(R.id.spinButton);
         nudge1 = findViewById(R.id.nudgeButton1);
         nudge2 = findViewById(R.id.nudgeButton2);
         nudge3 = findViewById(R.id.nudgeButton3);
@@ -97,13 +95,13 @@ public class GameActivity extends AppCompatActivity {
     }
 
     public void win(final int value){
-        winner.setVisibility(View.VISIBLE);
-        spin.setVisibility(View.INVISIBLE);
+        winnerImage.setVisibility(View.VISIBLE);
+        spinButton.setVisibility(View.INVISIBLE);
         final Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             public void run() {
-                winner.setVisibility(View.INVISIBLE);
-                spin.setVisibility(View.VISIBLE);
+                winnerImage.setVisibility(View.INVISIBLE);
+                spinButton.setVisibility(View.VISIBLE);
                 slotMachine.addPlayerFunds(value);
                 updatePlayerMoney();
             }
@@ -222,4 +220,9 @@ public class GameActivity extends AppCompatActivity {
             wheel.setPlayerHasHeld(false);
         }
     }
+
+    //NUDGE FUNCTIONS
+
+
+
 }

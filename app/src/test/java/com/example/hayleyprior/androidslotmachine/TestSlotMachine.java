@@ -17,17 +17,13 @@ public class TestSlotMachine {
 
     private Symbols lion;
     private Symbols alligator;
-    private Wheel wheel;
     private SlotMachine slotMachine;
-    private SlotMachine spy;
 
     @Before
     public void setUp() throws Exception {
         lion = Symbols.LION;
         alligator = Symbols.ALLIGATOR;
-        wheel = new Wheel();
-        slotMachine = new SlotMachine(wheel, 3);
-        spy = Mockito.spy((new SlotMachine(wheel, 3)));
+        slotMachine = new SlotMachine(3);
     }
 
     @Test
@@ -37,7 +33,7 @@ public class TestSlotMachine {
 
     @Test
     public void canGenerate5Wheels() throws Exception {
-        SlotMachine fiveSlotMachine = new SlotMachine(wheel, 5);
+        SlotMachine fiveSlotMachine = new SlotMachine(5);
         assertEquals(5, fiveSlotMachine.countSlots());
     }
 

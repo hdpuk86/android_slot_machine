@@ -13,14 +13,13 @@ import static org.junit.Assert.assertNotEquals;
 
 public class TestWheel {
 
-    Wheel wheel1;
-    Wheel spy;
+    private Wheel wheel1;
+    private Wheel spy;
 
     @Before
     public void setUp() throws Exception {
         wheel1 = new Wheel();
         spy = Mockito.spy(new Wheel());
-
     }
 
     @Test
