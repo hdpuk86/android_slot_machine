@@ -73,7 +73,7 @@ public class GameActivity extends AppCompatActivity {
                 hold1.setBackgroundColor(Color.parseColor("#FFFFF584"));
                 hold1.setTextColor(Color.parseColor("#FFFF0D00"));
                 hold1.setVisibility(View.VISIBLE);
-           } else {
+            } else {
                 hold1.setVisibility(View.INVISIBLE);
             }
             if(wheel2.getHoldAvailable()){
@@ -169,6 +169,24 @@ public class GameActivity extends AppCompatActivity {
             wheel1.setPlayerHasHeld(true);
             hold1.setBackgroundColor(Color.parseColor("#FFFF0D00"));
             hold1.setTextColor(Color.parseColor("#FFFFF584"));
+        }
+    }
+
+    public void onHold2ButtonClicked(View button){
+        boolean hold = ((ToggleButton)button).isChecked();
+        if(hold) {
+            wheel2.setPlayerHasHeld(true);
+            hold2.setBackgroundColor(Color.parseColor("#FFFF0D00"));
+            hold2.setTextColor(Color.parseColor("#FFFFF584"));
+        }
+    }
+
+    public void onHold3ButtonClicked(View button){
+        boolean hold = ((ToggleButton)button).isChecked();
+        if(hold){
+            wheel3.setPlayerHasHeld(true);
+            hold3.setBackgroundColor(Color.parseColor("#FFFF0D00"));
+            hold3.setTextColor(Color.parseColor("#FFFFF584"));
         }
     }
 
