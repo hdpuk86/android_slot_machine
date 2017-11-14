@@ -29,6 +29,7 @@
         android:layout_marginBottom="8dp"
         android:layout_marginStart="36dp"
         android:layout_marginTop="8dp"
+        android:contentDescription="@string/top_symbol1"
         android:scaleType="fitXY"
         app:layout_constraintBottom_toTopOf="@+id/imageSymbol1"
         app:layout_constraintStart_toStartOf="@+id/slotMachineImage"
@@ -43,6 +44,7 @@
         android:layout_marginBottom="8dp"
         android:layout_marginStart="36dp"
         android:layout_marginTop="8dp"
+        android:contentDescription="@string/bottom_symbol_wheel_1"
         android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="@+id/slotMachineImage"
         app:layout_constraintStart_toStartOf="@+id/slotMachineImage"
@@ -89,12 +91,14 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:contentDescription="@string/top_symbol_wheel_2"
         android:scaleType="fitXY"
         app:layout_constraintBottom_toTopOf="@+id/imageSymbol2"
         app:layout_constraintEnd_toStartOf="@+id/wheel3TopImage"
         app:layout_constraintHorizontal_bias="0.463"
         app:layout_constraintStart_toEndOf="@+id/wheel1TopImage"
         app:layout_constraintTop_toTopOf="@+id/slotMachineImage"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/buffalo" />
 
     <ImageView
@@ -105,6 +109,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:contentDescription="@string/bottom_symbol_wheel_2"
         android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="@+id/slotMachineImage"
         app:layout_constraintEnd_toStartOf="@+id/wheel3BottomImage"
@@ -135,6 +140,7 @@
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="28dp"
         android:layout_marginTop="8dp"
+        android:contentDescription="@string/top_symbol_wheel_3"
         android:scaleType="fitXY"
         app:layout_constraintBottom_toTopOf="@+id/imageSymbol3"
         app:layout_constraintEnd_toEndOf="@+id/slotMachineImage"
@@ -149,6 +155,7 @@
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="28dp"
         android:layout_marginTop="8dp"
+        android:contentDescription="@string/bottom_symbol_wheel_3"
         android:scaleType="fitXY"
         app:layout_constraintBottom_toTopOf="@+id/holdButton3"
         app:layout_constraintEnd_toEndOf="@+id/slotMachineImage"
@@ -163,10 +170,13 @@
         android:layout_height="160dp"
         android:layout_marginBottom="12dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:background="@android:color/transparent"
+        android:contentDescription="@string/animation_image_view_wheel_1"
         android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="@+id/wheel2BottomImage"
+        app:layout_constraintBottom_toBottomOf="@+id/slotMachineImage"
         app:layout_constraintStart_toStartOf="@+id/slotMachineImage"
+        app:layout_constraintTop_toTopOf="@+id/slotMachineImage"
         app:srcCompat="@android:color/transparent" />
 
     <ImageView
@@ -178,12 +188,14 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:background="@android:color/transparent"
+        android:contentDescription="@string/animation_image_view_wheel_2"
         android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="@+id/wheel2BottomImage"
+        app:layout_constraintBottom_toBottomOf="@+id/slotMachineImage"
         app:layout_constraintEnd_toStartOf="@+id/animation3"
-        app:layout_constraintHorizontal_bias="0.017"
+        app:layout_constraintHorizontal_bias="0.333"
         app:layout_constraintStart_toEndOf="@+id/animation1"
-        app:layout_constraintTop_toTopOf="@+id/wheel2TopImage"
+        app:layout_constraintTop_toTopOf="@+id/slotMachineImage"
+        app:layout_constraintVertical_bias="0.458"
         app:srcCompat="@android:color/transparent" />
 
     <ImageView
@@ -191,14 +203,15 @@
         android:layout_width="120dp"
         android:layout_height="160dp"
         android:layout_marginBottom="8dp"
-        android:layout_marginEnd="12dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginTop="8dp"
         android:background="@android:color/transparent"
+        android:contentDescription="@string/animation_image_view_wheel_3"
         android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="@+id/wheel2BottomImage"
+        app:layout_constraintBottom_toBottomOf="@+id/slotMachineImage"
         app:layout_constraintEnd_toEndOf="@+id/slotMachineImage"
-        app:layout_constraintTop_toBottomOf="@+id/nudgeButton2"
-        app:layout_constraintVertical_bias="0.733"
+        app:layout_constraintTop_toTopOf="@+id/slotMachineImage"
+        app:layout_constraintVertical_bias="0.458"
         app:srcCompat="@android:color/transparent" />
 
     <ImageView
@@ -239,7 +252,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:fontFamily="@font/rubik_mono_one"
+        android:fontFamily="monospace"
         android:text="@string/poundSign"
         android:textColor="@color/gold"
         android:textSize="34sp"
@@ -404,12 +417,12 @@
         app:layout_constraintVertical_bias="0.444" />
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/addMoneyButton"
         android:layout_width="85dp"
         android:layout_height="75dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginStart="4dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:background="@android:color/transparent"
         android:contentDescription="@string/add_money"

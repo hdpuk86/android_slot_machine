@@ -22,5 +22,18 @@
     <string name="winner">winner</string>
     <string name="togglebutton">ToggleButton</string>
     <string name="add_money">add money</string>
+    <string name="top_symbol1">top symbol wheel 1</string>
+    <string name="bottom_symbol_wheel_1">bottom symbol wheel 1</string>
+    <string name="top_symbol_wheel_2">top symbol wheel 2</string>
+    <string name="bottom_symbol_wheel_2">bottom symbol wheel 2</string>
+    <string name="top_symbol_wheel_3">top symbol wheel 3</string>
+    <string name="bottom_symbol_wheel_3">bottom symbol wheel 3</string>
+    <string name="animation_image_view_wheel_1">animation image view wheel 1</string>
+    <string name="animation_image_view_wheel_2">animation image view wheel 2</string>
+    <string name="animation_image_view_wheel_3">animation image view wheel 3</string>
+    <string name="fivepounds">£5</string>
+    <string name="tenpounds">£10</string>
+    <string name="twentypounds">£20</string>
+    <string name="fiftypounds">£50</string>
 
 </resources>
