@@ -399,76 +399,57 @@ public class GameActivity extends AppCompatActivity {
         showNudgeWheel3();
     }
 
-    public void onNudge1Clicked(View button){
-        wheel1.nudge();
-
+    public int getCurrentSymbolIdAfterNudge(int wheelIndex){
         ArrayList<Symbols> currentLine = slotMachine.getCurrentSymbols();
         ArrayList<String> lineImages = slotMachine.getLineImages(currentLine);
-        String image = lineImages.get(0);
-        int imageID = getResources().getIdentifier(image, "drawable", getPackageName());
-        symbol1.setImageResource(imageID);
+        String image = lineImages.get(wheelIndex);
+        return getResources().getIdentifier(image, "drawable", getPackageName());
+    }
 
+    public int getTopLineSymbolIDAfterNudge(int wheelIndex){
         ArrayList<Symbols> topLine = slotMachine.getTopLineSymbols();
         ArrayList<String> topImages = slotMachine.getLineImages(topLine);
-        String topImage = topImages.get(0);
-        int topID = getResources().getIdentifier(topImage, "drawable", getPackageName());
-        wheel1Top.setImageResource(topID);
+        String topImage = topImages.get(wheelIndex);
+        return getResources().getIdentifier(topImage, "drawable", getPackageName());
+    }
 
+    public int getBottomLineSymbolIdAfterNudge(int wheelIndex){
         ArrayList<Symbols> bottomLine = slotMachine.getBottomLineSymbols();
         ArrayList<String> bottomImages = slotMachine.getLineImages(bottomLine);
-        String bottomImage = bottomImages.get(0);
-        int bottomID = getResources().getIdentifier(bottomImage, "drawable", getPackageName());
-        wheel1Bottom.setImageResource(bottomID);
+        String bottomImage = bottomImages.get(wheelIndex);
+        return getResources().getIdentifier(bottomImage, "drawable", getPackageName());
+    }
 
+    public void onNudge1Clicked(View button){
+        wheel1.nudge();
+        int imageID = getCurrentSymbolIdAfterNudge(0);
+        symbol1.setImageResource(imageID);
+        int topID = getTopLineSymbolIDAfterNudge(0);
+        wheel1Top.setImageResource(topID);
+        int bottomID = getBottomLineSymbolIdAfterNudge(0);
+        wheel1Bottom.setImageResource(bottomID);
         checkNudgeWin();
     }
 
     public void onNudge2Clicked(View button){
         wheel2.nudge();
-
-        ArrayList<Symbols> currentLine = slotMachine.getCurrentSymbols();
-        ArrayList<String> lineImages = slotMachine.getLineImages(currentLine);
-        String image = lineImages.get(1);
-        int imageID = getResources().getIdentifier(image, "drawable", getPackageName());
+        int imageID = getCurrentSymbolIdAfterNudge(1);
         symbol2.setImageResource(imageID);
-
-        ArrayList<Symbols> topLine = slotMachine.getTopLineSymbols();
-        ArrayList<String> topImages = slotMachine.getLineImages(topLine);
-        String topImage = topImages.get(1);
-        int topID = getResources().getIdentifier(topImage, "drawable", getPackageName());
+        int topID = getTopLineSymbolIDAfterNudge(1);
         wheel2Top.setImageResource(topID);
-
-        ArrayList<Symbols> bottomLine = slotMachine.getBottomLineSymbols();
-        ArrayList<String> bottomImages = slotMachine.getLineImages(bottomLine);
-        String bottomImage = bottomImages.get(1);
-        int bottomID = getResources().getIdentifier(bottomImage, "drawable", getPackageName());
+        int bottomID = getBottomLineSymbolIdAfterNudge(1);
         wheel2Bottom.setImageResource(bottomID);
-
         checkNudgeWin();
-
     }
 
     public void onNudge3Clicked(View button) {
         wheel3.nudge();
-
-        ArrayList<Symbols> currentLine = slotMachine.getCurrentSymbols();
-        ArrayList<String> lineImages = slotMachine.getLineImages(currentLine);
-        String image = lineImages.get(2);
-        int imageID = getResources().getIdentifier(image, "drawable", getPackageName());
+        int imageID = getCurrentSymbolIdAfterNudge(2);
         symbol3.setImageResource(imageID);
-
-        ArrayList<Symbols> topLine = slotMachine.getTopLineSymbols();
-        ArrayList<String> topImages = slotMachine.getLineImages(topLine);
-        String topImage = topImages.get(2);
-        int topID = getResources().getIdentifier(topImage, "drawable", getPackageName());
+        int topID = getTopLineSymbolIDAfterNudge(2);
         wheel3Top.setImageResource(topID);
-
-        ArrayList<Symbols> bottomLine = slotMachine.getBottomLineSymbols();
-        ArrayList<String> bottomImages = slotMachine.getLineImages(bottomLine);
-        String bottomImage = bottomImages.get(2);
-        int bottomID = getResources().getIdentifier(bottomImage, "drawable", getPackageName());
+        int bottomID = getBottomLineSymbolIdAfterNudge(2);
         wheel3Bottom.setImageResource(bottomID);
-
         checkNudgeWin();
     }
 
