@@ -3,11 +3,11 @@ package com.example.hayleyprior.androidslotmachine;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.AnimationDrawable;
-import android.media.Image;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -33,9 +33,9 @@ public class GameActivity extends AppCompatActivity {
     private ImageView wheel3Bottom;
     private ImageView winnerImage;
     private ImageButton spinButton;
-    private ToggleButton nudge1;
-    private ToggleButton nudge2;
-    private ToggleButton nudge3;
+    private Button nudge1;
+    private Button nudge2;
+    private Button nudge3;
     private ToggleButton hold1;
     private ToggleButton hold2;
     private ToggleButton hold3;
@@ -154,13 +154,27 @@ public class GameActivity extends AppCompatActivity {
         return false;
     }
 
-    public void checkWin(){
+    public void spinCheckWin(){
         startAnimation1();
         startAnimation2();
         startAnimation3();
-        ArrayList<Symbols> newLine = spin();
+        final ArrayList<Symbols> newLine = spin();
         final int value = slotMachine.getWinValue(newLine);
-        if (slotMachine.checkWin(newLine)) {
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if (slotMachine.checkWin(newLine)) {
+                    win(value);
+                }
+            }
+        }, 1300);
+    }
+
+    public void checkNudgeWin(){
+        ArrayList<Symbols> newLine = slotMachine.getCurrentSymbols();
+        final int value = slotMachine.getWinValue(newLine);
+        if(slotMachine.checkWin(newLine)){
             win(value);
         }
     }
@@ -247,7 +261,7 @@ public class GameActivity extends AppCompatActivity {
         if(checkPlayerBust()) {
             gameOver();
         } else {
-            checkWin();
+            spinCheckWin();
             final Handler handler = new Handler();
             handler.postDelayed(new Runnable(){
                 public void run(){
@@ -407,6 +421,8 @@ public class GameActivity extends AppCompatActivity {
         String bottomImage = bottomImages.get(0);
         int bottomID = getResources().getIdentifier(bottomImage, "drawable", getPackageName());
         wheel1Bottom.setImageResource(bottomID);
+
+        checkNudgeWin();
     }
 
     public void onNudge2Clicked(View button){
@@ -430,6 +446,9 @@ public class GameActivity extends AppCompatActivity {
         String bottomImage = bottomImages.get(1);
         int bottomID = getResources().getIdentifier(bottomImage, "drawable", getPackageName());
         wheel2Bottom.setImageResource(bottomID);
+
+        checkNudgeWin();
+
     }
 
     public void onNudge3Clicked(View button) {
@@ -453,6 +472,8 @@ public class GameActivity extends AppCompatActivity {
         String bottomImage = bottomImages.get(2);
         int bottomID = getResources().getIdentifier(bottomImage, "drawable", getPackageName());
         wheel3Bottom.setImageResource(bottomID);
+
+        checkNudgeWin();
     }
 
     public void resetNudgesFalse(){
