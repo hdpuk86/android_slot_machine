@@ -35,5 +35,10 @@
     <string name="tenpounds">£10</string>
     <string name="twentypounds">£20</string>
     <string name="fiftypounds">£50</string>
+    <string name="find_result">find result</string>
+    <string name="mini_game">Mini Game</string>
+    <string name="minigame_rules">Pick a tree! BONUS 10 SPINS if you find the poacher!</string>
+    <string name="word_continue">Continue</string>
+    <string name="tree">tree</string>
 
 </resources>

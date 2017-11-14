@@ -1,5 +1,6 @@
 package com.example.hayleyprior.androidslotmachine;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.AnimationDrawable;
@@ -167,8 +168,15 @@ public class GameActivity extends AppCompatActivity {
     }
 
     public void gameOver(){
-        Intent i = new Intent(this, GameOverActivity.class);
-        startActivity(i);
+        int random = wheel1.randomInt(5);
+        if (random == 1) {
+            Intent i = new Intent(this, MiniGameActivity.class);
+            startActivity(i);
+        }
+        else {
+            Intent i = new Intent(this, GameOverActivity.class);
+            startActivity(i);
+        }
     }
 
     public void win(final int value){
