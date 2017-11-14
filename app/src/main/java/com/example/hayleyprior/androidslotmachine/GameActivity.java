@@ -137,8 +137,6 @@ public class GameActivity extends AppCompatActivity {
         animation3Image.setVisibility(View.INVISIBLE);
     }
 
-
-
     //GENERAL GAME FUNCTIONS
 
     public void updatePlayerMoney(){
@@ -154,29 +152,18 @@ public class GameActivity extends AppCompatActivity {
         return false;
     }
 
-    public void spinCheckWin(){
-        startAnimation1();
-        startAnimation2();
-        startAnimation3();
-        final ArrayList<Symbols> newLine = spin();
-        final int value = slotMachine.getWinValue(newLine);
-        final Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                if (slotMachine.checkWin(newLine)) {
-                    win(value);
-                }
-            }
-        }, 1300);
+    public void onCollectButtonClicked(View button){
+        Integer endMoney = slotMachine.checkPlayerFunds();
+        Intent i = new Intent(this, CollectActivity.class);
+        i.putExtra("startMoney", this.startMoney);
+        i.putExtra("endMoney", endMoney);
+        startActivity(i);
     }
 
-    public void checkNudgeWin(){
-        ArrayList<Symbols> newLine = slotMachine.getCurrentSymbols();
-        final int value = slotMachine.getWinValue(newLine);
-        if(slotMachine.checkWin(newLine)){
-            win(value);
-        }
+    public void onAddMoneyClicked(View button){
+        Intent i = new Intent(this, MoneyActivity.class);
+        i.putExtra("currentFunds", slotMachine.checkPlayerFunds());
+        startActivity(i);
     }
 
     public void gameOver(){
@@ -214,6 +201,23 @@ public class GameActivity extends AppCompatActivity {
             }
         }, 1300);
         return newLine;
+    }
+
+    public void spinCheckWin(){
+        startAnimation1();
+        startAnimation2();
+        startAnimation3();
+        final ArrayList<Symbols> newLine = spin();
+        final int value = slotMachine.getWinValue(newLine);
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if (slotMachine.checkWin(newLine)) {
+                    win(value);
+                }
+            }
+        }, 1300);
     }
 
     public void updateCurrentLine(ArrayList<Symbols> newLine){
@@ -262,36 +266,17 @@ public class GameActivity extends AppCompatActivity {
             gameOver();
         } else {
             spinCheckWin();
+            showHoldIfAvailable();
+            showNudgeIfAvailable();
             final Handler handler = new Handler();
             handler.postDelayed(new Runnable(){
                 public void run(){
                     updatePlayerMoney();
-                    showHoldIfAvailable();
-                    showNudgeIfAvailable();
                     resetNudgesFalse();
                     resetHoldButtonsFalse();
                 }
             }, 1300);
-
         }
-    }
-
-    //COLLECT
-
-    public void onCollectButtonClicked(View button){
-        Integer endMoney = slotMachine.checkPlayerFunds();
-        Intent i = new Intent(this, CollectActivity.class);
-        i.putExtra("startMoney", this.startMoney);
-        i.putExtra("endMoney", endMoney);
-        startActivity(i);
-    }
-
-    //ADD MONEY
-
-    public void onAddMoneyClicked(View button){
-        Intent i = new Intent(this, MoneyActivity.class);
-        i.putExtra("currentFunds", slotMachine.checkPlayerFunds());
-        startActivity(i);
     }
 
     //HOLD FUNCTIONS
@@ -367,6 +352,15 @@ public class GameActivity extends AppCompatActivity {
 
     //NUDGE FUNCTIONS
 
+    public void checkNudgeWin(){
+        ArrayList<Symbols> newLine = slotMachine.getCurrentSymbols();
+        final int value = slotMachine.getWinValue(newLine);
+        if(slotMachine.checkWin(newLine)){
+            hideAllNudgeButtons();
+            win(value);
+        }
+    }
+
     public void showNudgeWheel1(){
         if(wheel1.getNudgeAvailable()){
             nudge1.setVisibility(View.VISIBLE);
@@ -401,7 +395,6 @@ public class GameActivity extends AppCompatActivity {
     }
 
     public void onNudge1Clicked(View button){
-        showNudgeWheel1();
         wheel1.nudge();
 
         ArrayList<Symbols> currentLine = slotMachine.getCurrentSymbols();
@@ -426,7 +419,6 @@ public class GameActivity extends AppCompatActivity {
     }
 
     public void onNudge2Clicked(View button){
-        showNudgeWheel2();
         wheel2.nudge();
 
         ArrayList<Symbols> currentLine = slotMachine.getCurrentSymbols();
@@ -452,7 +444,6 @@ public class GameActivity extends AppCompatActivity {
     }
 
     public void onNudge3Clicked(View button) {
-        showNudgeWheel3();
         wheel3.nudge();
 
         ArrayList<Symbols> currentLine = slotMachine.getCurrentSymbols();
@@ -474,6 +465,12 @@ public class GameActivity extends AppCompatActivity {
         wheel3Bottom.setImageResource(bottomID);
 
         checkNudgeWin();
+    }
+
+    public void hideAllNudgeButtons(){
+        nudge1.setVisibility(View.INVISIBLE);
+        nudge2.setVisibility(View.INVISIBLE);
+        nudge3.setVisibility(View.INVISIBLE);
     }
 
     public void resetNudgesFalse(){
