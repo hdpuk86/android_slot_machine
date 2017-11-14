@@ -1,5 +1,6 @@
 package com.example.hayleyprior.androidslotmachine;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -18,4 +19,5 @@ public class HomeActivity extends AppCompatActivity {
         Intent i = new Intent(this, MoneyActivity.class);
         startActivity(i);
     }
+
 }

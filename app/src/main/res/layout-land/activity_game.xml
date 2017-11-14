@@ -156,6 +156,51 @@
         app:layout_constraintVertical_bias="0.736"
         app:srcCompat="@drawable/snake" />
 
+
+    <ImageView
+        android:id="@+id/animation1"
+        android:layout_width="120dp"
+        android:layout_height="160dp"
+        android:layout_marginBottom="12dp"
+        android:layout_marginStart="8dp"
+        android:background="@android:color/transparent"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/wheel2BottomImage"
+        app:layout_constraintStart_toStartOf="@+id/slotMachineImage"
+        app:srcCompat="@android:color/transparent" />
+
+    <ImageView
+        android:id="@+id/animation2"
+        android:layout_width="120dp"
+        android:layout_height="160dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@android:color/transparent"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/wheel2BottomImage"
+        app:layout_constraintEnd_toStartOf="@+id/animation3"
+        app:layout_constraintHorizontal_bias="0.017"
+        app:layout_constraintStart_toEndOf="@+id/animation1"
+        app:layout_constraintTop_toTopOf="@+id/wheel2TopImage"
+        app:srcCompat="@android:color/transparent" />
+
+    <ImageView
+        android:id="@+id/animation3"
+        android:layout_width="120dp"
+        android:layout_height="160dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginTop="8dp"
+        android:background="@android:color/transparent"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/wheel2BottomImage"
+        app:layout_constraintEnd_toEndOf="@+id/slotMachineImage"
+        app:layout_constraintTop_toBottomOf="@+id/nudgeButton2"
+        app:layout_constraintVertical_bias="0.733"
+        app:srcCompat="@android:color/transparent" />
+
     <ImageView
         android:id="@+id/slotMachineImage"
         android:layout_width="400dp"
@@ -377,5 +422,7 @@
         app:layout_constraintTop_toBottomOf="@+id/collectButton"
         app:layout_constraintVertical_bias="0.067"
         app:srcCompat="@drawable/addmoney" />
+
+
 
 </android.support.constraint.ConstraintLayout>

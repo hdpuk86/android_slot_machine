@@ -26,7 +26,7 @@
             android:name=".GameActivity"
             android:screenOrientation="landscape" />
         <activity android:name=".GameOverActivity" />
-        <activity android:name=".CollectActivity"></activity>
+        <activity android:name=".CollectActivity" />
     </application>
 
 </manifest>

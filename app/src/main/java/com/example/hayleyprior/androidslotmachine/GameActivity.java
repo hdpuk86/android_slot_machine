@@ -2,6 +2,8 @@ package com.example.hayleyprior.androidslotmachine;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.AnimationDrawable;
+import android.media.Image;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -38,6 +40,12 @@ public class GameActivity extends AppCompatActivity {
     private ToggleButton hold2;
     private ToggleButton hold3;
     private Integer startMoney;
+    private AnimationDrawable animation1;
+    private ImageView animation1Image;
+    private AnimationDrawable animation2;
+    private ImageView animation2Image;
+    private AnimationDrawable animation3;
+    private ImageView animation3Image;
 
 
     @Override
@@ -69,6 +77,18 @@ public class GameActivity extends AppCompatActivity {
         wheel2 = slots.get(1);
         wheel3 = slots.get(2);
 
+        animation1Image = findViewById(R.id.animation1);
+        animation1Image.setBackgroundResource(R.drawable.animation);
+        animation1 = (AnimationDrawable) animation1Image.getBackground();
+
+        animation2Image = findViewById(R.id.animation2);
+        animation2Image.setBackgroundResource(R.drawable.animation);
+        animation2 = (AnimationDrawable) animation2Image.getBackground();
+
+        animation3Image = findViewById(R.id.animation3);
+        animation3Image.setBackgroundResource(R.drawable.animation);
+        animation3 = (AnimationDrawable) animation3Image.getBackground();
+
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
         startMoney = extras.getInt("playerFunds");
@@ -78,6 +98,46 @@ public class GameActivity extends AppCompatActivity {
 
         playerFunds.setText(playerMoney.toString());
     }
+
+    //ANIMATION FUNCTION
+
+    public void startAnimation1(){
+        if(!wheel1.getPlayerHasHeld()){
+            animation1.setVisible(false, true);
+            animation1Image.setVisibility(View.VISIBLE);
+            animation1.start();
+        }
+    }
+
+    public void clearAnimation1View(){
+        animation1Image.setVisibility(View.INVISIBLE);
+    }
+
+    public void startAnimation2(){
+        if(!wheel2.getPlayerHasHeld()){
+            animation2.setVisible(false, true);
+            animation2Image.setVisibility(View.VISIBLE);
+            animation2.start();
+        }
+    }
+
+    public void clearAnimation2View(){
+        animation2Image.setVisibility(View.INVISIBLE);
+    }
+
+    public void startAnimation3(){
+        if(!wheel3.getPlayerHasHeld()){
+            animation3.setVisible(false, true);
+            animation3Image.setVisibility(View.VISIBLE);
+            animation3.start();
+        }
+    }
+
+    public void clearAnimation3View(){
+        animation3Image.setVisibility(View.INVISIBLE);
+    }
+
+
 
     //GENERAL GAME FUNCTIONS
 
@@ -95,6 +155,9 @@ public class GameActivity extends AppCompatActivity {
     }
 
     public void checkWin(){
+        startAnimation1();
+        startAnimation2();
+        startAnimation3();
         ArrayList<Symbols> newLine = spin();
         final int value = slotMachine.getWinValue(newLine);
         if (slotMachine.checkWin(newLine)) {
@@ -124,10 +187,18 @@ public class GameActivity extends AppCompatActivity {
     //SPIN FUNCTIONS
 
     public ArrayList<Symbols> spin(){
-        ArrayList<Symbols> newLine = slotMachine.spin();
-        updateCurrentLine(newLine);
-        updateTopLine();
-        updateBottomLine();
+        final ArrayList<Symbols> newLine = slotMachine.spin();
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            public void run() {
+                clearAnimation1View();
+                clearAnimation2View();
+                clearAnimation3View();
+                updateCurrentLine(newLine);
+                updateTopLine();
+                updateBottomLine();
+            }
+        }, 1300);
         return newLine;
     }
 
@@ -173,15 +244,21 @@ public class GameActivity extends AppCompatActivity {
     }
 
     public void onSpinButtonClicked(View button){
-        if(!checkPlayerBust()) {
-            checkWin();
-            updatePlayerMoney();
-            showHoldIfAvailable();
-            showNudgeIfAvailable();
-            resetNudgesFalse();
-            resetHoldButtonsFalse();
-        } else {
+        if(checkPlayerBust()) {
             gameOver();
+        } else {
+            checkWin();
+            final Handler handler = new Handler();
+            handler.postDelayed(new Runnable(){
+                public void run(){
+                    updatePlayerMoney();
+                    showHoldIfAvailable();
+                    showNudgeIfAvailable();
+                    resetNudgesFalse();
+                    resetHoldButtonsFalse();
+                }
+            }, 1300);
+
         }
     }
 
