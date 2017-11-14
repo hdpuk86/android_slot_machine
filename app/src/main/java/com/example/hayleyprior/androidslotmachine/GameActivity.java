@@ -138,6 +138,20 @@ public class GameActivity extends AppCompatActivity {
         animation3Image.setVisibility(View.INVISIBLE);
     }
 
+    public void startSlotAnimations(){
+        startAnimation1();
+        startAnimation2();
+        startAnimation3();
+        spinButton.setVisibility(View.INVISIBLE);
+    }
+
+    public void clearSlotAnimations(){
+        clearAnimation1View();
+        clearAnimation2View();
+        clearAnimation3View();
+        spinButton.setVisibility(View.VISIBLE);
+    }
+
     //GENERAL GAME FUNCTIONS
 
     public void updatePlayerMoney(){
@@ -147,10 +161,7 @@ public class GameActivity extends AppCompatActivity {
 
     public boolean checkPlayerBust(){
         int money = slotMachine.checkPlayerFunds();
-        if(money <= 0){
-            return true;
-        }
-        return false;
+        return money <= 0;
     }
 
     public void onCollectButtonClicked(View button){
@@ -195,37 +206,41 @@ public class GameActivity extends AppCompatActivity {
 
     //SPIN FUNCTIONS
 
-    public ArrayList<Symbols> spin(){
-        final ArrayList<Symbols> newLine = slotMachine.spin();
-        final Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            public void run() {
-                clearAnimation1View();
-                clearAnimation2View();
-                clearAnimation3View();
-                updateCurrentLine(newLine);
-                updateTopLine();
-                updateBottomLine();
-            }
-        }, 1300);
-        return newLine;
+    public void onSpinButtonClicked(View button){
+        if(checkPlayerBust()) {
+            gameOver();
+        } else {
+            spin();
+            startSlotAnimations();
+            showHoldIfAvailable();
+            showNudgeIfAvailable();
+            final Handler handler = new Handler();
+            handler.postDelayed(new Runnable(){
+                public void run(){
+                    clearSlotAnimations();
+                    updatePlayerMoney();
+                    resetNudgesFalse();
+                    resetHoldButtonsFalse();
+                }
+            }, 1300);
+        }
     }
 
-    public void spinCheckWin(){
-        startAnimation1();
-        startAnimation2();
-        startAnimation3();
-        final ArrayList<Symbols> newLine = spin();
+    public ArrayList<Symbols> spin(){
+        final ArrayList<Symbols> newLine = slotMachine.spin();
         final int value = slotMachine.getWinValue(newLine);
         final Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
-            @Override
             public void run() {
+                updateCurrentLine(newLine);
+                updateTopLine();
+                updateBottomLine();
                 if (slotMachine.checkWin(newLine)) {
                     win(value);
                 }
             }
         }, 1300);
+        return newLine;
     }
 
     public void updateCurrentLine(ArrayList<Symbols> newLine){
@@ -267,24 +282,6 @@ public class GameActivity extends AppCompatActivity {
         wheel1Bottom.setImageResource(idImage1);
         wheel2Bottom.setImageResource(idImage2);
         wheel3Bottom.setImageResource(idImage3);
-    }
-
-    public void onSpinButtonClicked(View button){
-        if(checkPlayerBust()) {
-            gameOver();
-        } else {
-            spinCheckWin();
-            showHoldIfAvailable();
-            showNudgeIfAvailable();
-            final Handler handler = new Handler();
-            handler.postDelayed(new Runnable(){
-                public void run(){
-                    updatePlayerMoney();
-                    resetNudgesFalse();
-                    resetHoldButtonsFalse();
-                }
-            }, 1300);
-        }
     }
 
     //HOLD FUNCTIONS

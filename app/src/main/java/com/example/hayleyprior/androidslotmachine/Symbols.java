@@ -4,6 +4,8 @@ package com.example.hayleyprior.androidslotmachine;
  * Created by hayleyprior on 10/11/2017.
  */
 
+
+
 public enum Symbols {
     LEOPARD(100, "@drawable/leopard"),
     RHINO(80, "@drawable/rhino"),

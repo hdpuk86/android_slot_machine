@@ -11,23 +11,24 @@ public class SlotMachine {
 
     private int numberOfWheels;
     private ArrayList<Wheel> slots;
-    private int gameBank;
     private int playerFunds;
 
     public SlotMachine(int numberOfWheels) {
         this.numberOfWheels = numberOfWheels;
         this.slots = new ArrayList<>();
-        this.gameBank = 0;
         this.playerFunds = 0;
         generateWheels();
     }
 
-    public ArrayList<Wheel> getSlots() {
-        return slots;
+    private void generateWheels(){
+        for(int i = 0; i <numberOfWheels; i++){
+            Wheel wheel = new Wheel();
+            this.slots.add(wheel);
+        }
     }
 
-    public int checkGameBank() {
-        return gameBank;
+    public ArrayList<Wheel> getSlots() {
+        return slots;
     }
 
     public int checkPlayerFunds() {
@@ -38,23 +39,16 @@ public class SlotMachine {
         this.playerFunds = amount;
     }
 
-    public void addToGameBank(int amount) {
-        this.gameBank += amount;
+    public void addPlayerFunds(int amount){
+        this.playerFunds += amount;
     }
 
     public int countSlots(){
         return this.slots.size();
     }
 
-    public void generateWheels(){
-        for(int i = 0; i <numberOfWheels; i++){
-            Wheel wheel = new Wheel();
-            this.slots.add(wheel);
-        }
-    }
-
-    public void addPlayerFunds(int amount){
-        this.playerFunds += amount;
+    public int getWinValue(ArrayList<Symbols> line){
+        return line.get(0).getValue();
     }
 
     public boolean checkWin(ArrayList<Symbols> line){
@@ -64,19 +58,11 @@ public class SlotMachine {
                 counter++;
             }
         }
-        if(counter == line.size()){
-            return true;
-        }
-        return false;
-    }
-
-    public int getWinValue(ArrayList<Symbols> line){
-        return line.get(0).getValue();
+        return counter == line.size();
     }
 
     public ArrayList<Symbols> spin(){
         addPlayerFunds(-1);
-        addToGameBank(1);
         ArrayList<Symbols> line = new ArrayList<>();
         for(Wheel wheel : slots){
             line.add(wheel.spin());
@@ -123,7 +109,4 @@ public class SlotMachine {
         }
         return images;
     }
-
-
-
 }

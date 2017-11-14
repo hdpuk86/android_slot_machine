@@ -1,6 +1,7 @@
 package com.example.hayleyprior.androidslotmachine;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Random;
 
 /**
@@ -23,56 +24,46 @@ public class Wheel {
         generateSymbols();
         this.currentSymbol = getRandomSymbol();
     }
-
-    public Boolean getHoldAvailable() {
-        return holdAvailable;
-    }
-
-    public Boolean getNudgeAvailable() {
-        return nudgeAvailable;
+    private void generateSymbols(){
+        Collections.addAll(this.allSymbols, Symbols.values());
     }
 
     public void setHoldAvailable(Boolean holdAvailable) {
         this.holdAvailable = holdAvailable;
     }
-
     public void setNudgeAvailable(Boolean nudgeAvailable) {
         this.nudgeAvailable = nudgeAvailable;
     }
-
-    public Boolean getPlayerHasHeld() {
-        return playerHasHeld;
-    }
-
     public void setPlayerHasHeld(Boolean playerHasHeld) {
         this.playerHasHeld = playerHasHeld;
     }
-
     public void setCurrentSymbol(Symbols currentSymbol) {
         this.currentSymbol = currentSymbol;
     }
 
+    public Boolean getHoldAvailable() {
+        return holdAvailable;
+    }
+    public Boolean getNudgeAvailable() {
+        return nudgeAvailable;
+    }
+    public Boolean getPlayerHasHeld() {
+        return playerHasHeld;
+    }
     public Symbols getCurrentSymbol() {
         return currentSymbol;
     }
-
     public int getSymbolIndex(Symbols symbol){
         return this.allSymbols.indexOf(symbol);
     }
 
-    public void generateSymbols(){
-        for(Symbols symbol : Symbols.values()){
-            this.allSymbols.add(symbol);
-        }
+    private String getSymbolImage(Symbols symbol){
+        return symbol.getImageName();
     }
 
-    public int countSymbols(){
-        return this.allSymbols.size();
-    }
-
-    public int randomInt(int max){
-        Random rand = new Random();
-        return rand.nextInt(max);
+    public String getSymbolImageAtIndex(int index){
+        Symbols symbol = getSymbolAtIndex(index);
+        return getSymbolImage(symbol);
     }
 
     public Symbols getSymbolAtIndex(int index){
@@ -84,12 +75,11 @@ public class Wheel {
         return getSymbolAtIndex(randomIndex);
     }
 
-    public Symbols getPreviousSymbol(Symbols currentSymbol){
+    private Symbols getPreviousSymbol(Symbols currentSymbol){
         int currentIndex = getSymbolIndex(currentSymbol);
         if(currentIndex == 0){
             int topIndex = countSymbols() - 1;
             return getSymbolAtIndex(topIndex);
-
         } else {
             int topIndex = currentIndex - 1;
             return getSymbolAtIndex(topIndex);
@@ -107,11 +97,19 @@ public class Wheel {
         if(currentIndex == countSymbols() - 1){
             int bottomIndex = 0;
             return getSymbolAtIndex(bottomIndex);
-
         } else {
             int bottomIndex = currentIndex + 1;
             return getSymbolAtIndex(bottomIndex);
         }
+    }
+
+    public int countSymbols(){
+        return this.allSymbols.size();
+    }
+
+    public int randomInt(int max){
+        Random rand = new Random();
+        return rand.nextInt(max);
     }
 
     public Symbols spin(){
@@ -154,16 +152,5 @@ public class Wheel {
             setHoldAvailable(false);
         }
     }
-
-    public String getSymbolImage(Symbols symbol){
-        return symbol.getImageName();
-    }
-
-    public String getSymbolImageAtIndex(int index){
-        Symbols symbol = getSymbolAtIndex(index);
-        return getSymbolImage(symbol);
-    }
-
-
 
 }

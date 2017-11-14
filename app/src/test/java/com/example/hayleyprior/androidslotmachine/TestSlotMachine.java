@@ -58,12 +58,6 @@ public class TestSlotMachine {
     }
 
     @Test
-    public void gameBankIncreasesAfterSpin() throws Exception {
-        slotMachine.spin();
-        assertEquals(1, slotMachine.checkGameBank());
-    }
-
-    @Test
     public void canGetLineImages() {
         ArrayList<Symbols> line = new ArrayList<>();
         line.add(lion);

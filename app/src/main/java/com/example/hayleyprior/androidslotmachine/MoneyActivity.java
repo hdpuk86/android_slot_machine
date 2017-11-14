@@ -7,7 +7,7 @@ import android.view.View;
 
 public class MoneyActivity extends AppCompatActivity {
 
-    int currentFunds;
+    private int currentFunds;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -14,13 +14,9 @@ import android.widget.ImageView;
 public class MiniGameActivity extends AppCompatActivity {
 
     private MiniGame miniGame;
-    private ImageView result1;
-    private ImageView result2;
-    private ImageView result3;
     private ImageButton tree1;
     private ImageButton tree2;
     private ImageButton tree3;
-    private int poacher;
 
 
     @Override
@@ -28,11 +24,11 @@ public class MiniGameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mini_game);
 
-        poacher = R.drawable.poacher;
+        int poacher = R.drawable.poacher;
         miniGame = new MiniGame();
-        result1 = findViewById(R.id.result1);
-        result2 = findViewById(R.id.result2);
-        result3 = findViewById(R.id.result3);
+        ImageView result1 = findViewById(R.id.result1);
+        ImageView result2 = findViewById(R.id.result2);
+        ImageView result3 = findViewById(R.id.result3);
         tree1 = findViewById(R.id.tree1);
         tree2 = findViewById(R.id.tree2);
         tree3 = findViewById(R.id.tree3);
