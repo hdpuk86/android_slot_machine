@@ -48,6 +48,9 @@ public class GameActivity extends AppCompatActivity {
     private AnimationDrawable animation3;
     private ImageView animation3Image;
     private MediaPlayer winSound;
+    private MediaPlayer rattleSound;
+    private MediaPlayer loseSound;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,6 +94,8 @@ public class GameActivity extends AppCompatActivity {
         animation3 = (AnimationDrawable) animation3Image.getBackground();
 
         winSound = MediaPlayer.create(getApplicationContext(), R.raw.winsound);
+        rattleSound = MediaPlayer.create(getApplicationContext(), R.raw.rattle);
+        loseSound = MediaPlayer.create(getApplicationContext(), R.raw.lose);
 
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
@@ -141,6 +146,7 @@ public class GameActivity extends AppCompatActivity {
     }
 
     public void startSlotAnimations(){
+        rattleSound.start();
         startAnimation1();
         startAnimation2();
         startAnimation3();
@@ -240,6 +246,8 @@ public class GameActivity extends AppCompatActivity {
                 updateBottomLine();
                 if (slotMachine.checkWin(newLine)) {
                     win(value);
+                } else {
+                    loseSound.start();
                 }
             }
         }, 1300);
