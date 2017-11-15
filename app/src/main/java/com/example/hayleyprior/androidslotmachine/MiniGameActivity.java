@@ -17,6 +17,9 @@ public class MiniGameActivity extends AppCompatActivity {
     private ImageButton tree1;
     private ImageButton tree2;
     private ImageButton tree3;
+    private ImageView result1;
+    private ImageView result2;
+    private ImageView result3;
     private Intent win;
     private Intent lose;
 
@@ -27,12 +30,13 @@ public class MiniGameActivity extends AppCompatActivity {
 
         int poacher = R.drawable.poacher;
         miniGame = new MiniGame();
-        ImageView result1 = findViewById(R.id.result1);
-        ImageView result2 = findViewById(R.id.result2);
-        ImageView result3 = findViewById(R.id.result3);
+        result1 = findViewById(R.id.result1);
+        result2 = findViewById(R.id.result2);
+        result3 = findViewById(R.id.result3);
         tree1 = findViewById(R.id.tree1);
         tree2 = findViewById(R.id.tree2);
         tree3 = findViewById(R.id.tree3);
+
 
         if(miniGame.getPosition1().equals("Win")){
             result1.setImageResource(poacher);
@@ -55,8 +59,15 @@ public class MiniGameActivity extends AppCompatActivity {
         tree3.setVisibility(View.INVISIBLE);
     }
 
+    public void setResultsVisible(){
+        result1.setVisibility(View.VISIBLE);
+        result2.setVisibility(View.VISIBLE);
+        result3.setVisibility(View.VISIBLE);
+    }
+
     public void onTree1Clicked(View button){
         setAllTreesInvisible();
+        setResultsVisible();
         if(miniGame.getPosition1().equals("Win")){
             final Handler handler = new Handler();
             handler.postDelayed(new Runnable() {
@@ -78,6 +89,7 @@ public class MiniGameActivity extends AppCompatActivity {
 
     public void onTree2Clicked(View button){
         setAllTreesInvisible();
+        setResultsVisible();
         if(miniGame.getPosition2().equals("Win")){
             final Handler handler = new Handler();
             handler.postDelayed(new Runnable() {
@@ -99,6 +111,7 @@ public class MiniGameActivity extends AppCompatActivity {
 
     public void onTree3Clicked(View button){
         setAllTreesInvisible();
+        setResultsVisible();
         if(miniGame.getPosition3().equals("Win")){
             final Handler handler = new Handler();
             handler.postDelayed(new Runnable() {
