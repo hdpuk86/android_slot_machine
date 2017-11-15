@@ -1,6 +1,5 @@
 package com.example.hayleyprior.androidslotmachine;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.AnimationDrawable;
@@ -48,7 +47,6 @@ public class GameActivity extends AppCompatActivity {
     private AnimationDrawable animation3;
     private ImageView animation3Image;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,15 +77,15 @@ public class GameActivity extends AppCompatActivity {
         wheel3 = slots.get(2);
 
         animation1Image = findViewById(R.id.animation1);
-        animation1Image.setBackgroundResource(R.drawable.animation);
+        animation1Image.setBackgroundResource(R.drawable.wheel1animation);
         animation1 = (AnimationDrawable) animation1Image.getBackground();
 
         animation2Image = findViewById(R.id.animation2);
-        animation2Image.setBackgroundResource(R.drawable.animation);
+        animation2Image.setBackgroundResource(R.drawable.wheel2animation);
         animation2 = (AnimationDrawable) animation2Image.getBackground();
 
         animation3Image = findViewById(R.id.animation3);
-        animation3Image.setBackgroundResource(R.drawable.animation);
+        animation3Image.setBackgroundResource(R.drawable.wheel3animation);
         animation3 = (AnimationDrawable) animation3Image.getBackground();
 
         Intent intent = getIntent();
@@ -179,7 +177,7 @@ public class GameActivity extends AppCompatActivity {
     }
 
     public void gameOver(){
-        int random = wheel1.randomInt(5);
+        int random = wheel1.randomInt(4);
         if (random == 1) {
             Intent i = new Intent(this, MiniGameActivity.class);
             startActivity(i);
@@ -464,5 +462,4 @@ public class GameActivity extends AppCompatActivity {
             wheel.setNudgeAvailable(false);
         }
     }
-
 }
