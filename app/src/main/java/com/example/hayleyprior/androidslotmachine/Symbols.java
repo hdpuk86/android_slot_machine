@@ -8,19 +8,19 @@ package com.example.hayleyprior.androidslotmachine;
 
 public enum Symbols {
     LEOPARD(100, "@drawable/leopard"),
-    RHINO(80, "@drawable/rhino"),
-    LION(75, "@drawable/lion"),
-    BUFFALO(60, "@drawable/buffalo"),
-    ELEPHANT(50, "@drawable/elephant"),
-    ALLIGATOR(40, "@drawable/alligator"),
-    HIPPO(30, "@drawable/hippo"),
-    SNAKE(20, "@drawable/snake"),
-    ZEBRA(10, "@drawable/zebra"),
-    SPRINGBOK(5, "@drawable/springbok"),
+//    RHINO(80, "@drawable/rhino"),
+//    LION(75, "@drawable/lion"),
+//    BUFFALO(60, "@drawable/buffalo"),
+//    ELEPHANT(50, "@drawable/elephant"),
+//    ALLIGATOR(40, "@drawable/alligator"),
+//    HIPPO(30, "@drawable/hippo"),
+//    SNAKE(20, "@drawable/snake"),
+//    ZEBRA(10, "@drawable/zebra"),
+//    SPRINGBOK(5, "@drawable/springbok"),
     SPIN(1, "@drawable/spin");
 
-    String imageName;
-    int value;
+    public String imageName;
+    public int value;
 
     Symbols(int value, String imageName){
      this.imageName = imageName;

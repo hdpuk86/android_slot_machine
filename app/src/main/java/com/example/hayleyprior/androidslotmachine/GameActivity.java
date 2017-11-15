@@ -3,6 +3,7 @@ package com.example.hayleyprior.androidslotmachine;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.AnimationDrawable;
+import android.media.MediaPlayer;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -46,6 +47,7 @@ public class GameActivity extends AppCompatActivity {
     private ImageView animation2Image;
     private AnimationDrawable animation3;
     private ImageView animation3Image;
+    private MediaPlayer winSound;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,6 +89,8 @@ public class GameActivity extends AppCompatActivity {
         animation3Image = findViewById(R.id.animation3);
         animation3Image.setBackgroundResource(R.drawable.wheel3animation);
         animation3 = (AnimationDrawable) animation3Image.getBackground();
+
+        winSound = MediaPlayer.create(getApplicationContext(), R.raw.winsound);
 
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
@@ -191,6 +195,7 @@ public class GameActivity extends AppCompatActivity {
     public void win(final int value){
         winnerImage.setVisibility(View.VISIBLE);
         spinButton.setVisibility(View.INVISIBLE);
+        winSound.start();
         final Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             public void run() {
