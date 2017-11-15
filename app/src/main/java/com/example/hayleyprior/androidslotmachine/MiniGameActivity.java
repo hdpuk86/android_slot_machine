@@ -17,7 +17,8 @@ public class MiniGameActivity extends AppCompatActivity {
     private ImageButton tree1;
     private ImageButton tree2;
     private ImageButton tree3;
-
+    private Intent win;
+    private Intent lose;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +42,11 @@ public class MiniGameActivity extends AppCompatActivity {
             result3.setImageResource(poacher);
         }
 
+        win = new Intent(this, GameActivity.class);
+        win.putExtra("playerFunds", 10);
+        lose = new Intent(this, GameOverActivity.class);
+
+
     }
 
     public void setAllTreesInvisible(){
@@ -51,9 +57,6 @@ public class MiniGameActivity extends AppCompatActivity {
 
     public void onTree1Clicked(View button){
         setAllTreesInvisible();
-        final Intent win = new Intent(this, GameActivity.class);
-        final Intent lose = new Intent(this, GameOverActivity.class);
-        win.putExtra("playerFunds", 10);
         if(miniGame.getPosition1().equals("Win")){
             final Handler handler = new Handler();
             handler.postDelayed(new Runnable() {
@@ -75,9 +78,6 @@ public class MiniGameActivity extends AppCompatActivity {
 
     public void onTree2Clicked(View button){
         setAllTreesInvisible();
-        final Intent win = new Intent(this, GameActivity.class);
-        final Intent lose = new Intent(this, GameOverActivity.class);
-        win.putExtra("playerFunds", 10);
         if(miniGame.getPosition2().equals("Win")){
             final Handler handler = new Handler();
             handler.postDelayed(new Runnable() {
@@ -99,9 +99,6 @@ public class MiniGameActivity extends AppCompatActivity {
 
     public void onTree3Clicked(View button){
         setAllTreesInvisible();
-        final Intent win = new Intent(this, GameActivity.class);
-        final Intent lose = new Intent(this, GameOverActivity.class);
-        win.putExtra("playerFunds", 10);
         if(miniGame.getPosition3().equals("Win")){
             final Handler handler = new Handler();
             handler.postDelayed(new Runnable() {
