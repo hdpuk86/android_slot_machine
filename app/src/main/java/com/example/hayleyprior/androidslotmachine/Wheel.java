@@ -116,7 +116,6 @@ public class Wheel {
         randomAssignNudgeAvailable();
         randomAssignHoldAvailable();
         if(getPlayerHasHeld()){
-            setCurrentSymbol(this.currentSymbol);
             return this.currentSymbol;
         } else {
             Symbols newSymbol = getRandomSymbol();

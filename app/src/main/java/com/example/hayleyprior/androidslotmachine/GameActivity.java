@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.ToggleButton;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class GameActivity extends AppCompatActivity {
 
@@ -111,7 +112,6 @@ public class GameActivity extends AppCompatActivity {
 
     public void startAnimation1(){
         if(!wheel1.getPlayerHasHeld()){
-            animation1.setVisible(false, true);
             animation1Image.setVisibility(View.VISIBLE);
             animation1.start();
         }
@@ -123,7 +123,6 @@ public class GameActivity extends AppCompatActivity {
 
     public void startAnimation2(){
         if(!wheel2.getPlayerHasHeld()){
-            animation2.setVisible(false, true);
             animation2Image.setVisibility(View.VISIBLE);
             animation2.start();
         }
@@ -135,7 +134,6 @@ public class GameActivity extends AppCompatActivity {
 
     public void startAnimation3(){
         if(!wheel3.getPlayerHasHeld()){
-            animation3.setVisible(false, true);
             animation3Image.setVisibility(View.VISIBLE);
             animation3.start();
         }
@@ -186,8 +184,13 @@ public class GameActivity extends AppCompatActivity {
         startActivity(i);
     }
 
+    private int randomInt(int max){
+        Random rand = new Random();
+        return rand.nextInt(max);
+    }
+
     public void gameOver(){
-        int random = wheel1.randomInt(4);
+        int random = randomInt(4);
         if (random == 1) {
             Intent i = new Intent(this, MiniGameActivity.class);
             startActivity(i);
