@@ -1,4 +1,5 @@
-## Fruit Machine
+# Fruit Machine
+## The Spec:
 
 Goal: Create a fruit machine in Android.
 
@@ -15,6 +16,13 @@ The aim is to display the results of the Java logic already written. For example
 * Improve the UI
 
 
-## General Rules (Applies to ALL projects)
+### General Rules (Applies to ALL projects)
 
-* ***DO NOT USE ANY FRAMEWORKS*** - this includes Java Swing and similar packages. If in any doubt ask an instructor.
+* ***DO NOT USE ANY FRAMEWORKS*** - this includes Java Swing and similar packages.
+
+## My Approach
+As I already had working code from the homework which ran in the terminal, my planning was very basic. I decided to write the code for this project from scratch using TDD using the homework as a reference. My homework became the blueprint instead of drawing up  diagrams and I made notes of the things I would need to add or change to allow the extra features (nudge and hold) to work. Starting from scratch also allowed me to clean up and SOLIDify the code. The only other planning I did was to draw up my wireframes.
+
+## The Outcome
+I had my MVP up and running on day 3 of the project. I decided against extending to 5 reels because I felt I wouldn't learn anything by doing it, the code would have been the same but I would have had to just add more buttons and images to the screen. I had made the slot machine class extendable to allow extra wheels and my tests showed that it was possible. I did display the extra symbols on the screen and from there moved on to improving the interface. I wanted to learn and implement something new at that stage so looked into adding animation and sounds. This ended up working really well and drastically improved the UI. As an added extra I whipped up a bonus minigame in just over an hour to see how much I had learned. The game runs really well and I had time to refactor my code to a point where I was satisfied. There are a few things I would want to change and add in to finish things up but overall I was very happy with the end product.
+
