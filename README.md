@@ -31,4 +31,5 @@ The game runs really well and I had time to refactor my code to a point where I 
 
 ## Screenshots
 ![Main Game Screen](https://github.com/hdpuk86/android_slot_machine/blob/master/app/src/main/res/screenshots/nudge2.png "Main Game Screen Image")
+
 [More Screenshots](https://github.com/hdpuk86/android_slot_machine/tree/master/app/src/main/res/screenshots)
