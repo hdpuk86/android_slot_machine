@@ -50,7 +50,7 @@
         app:layout_constraintStart_toStartOf="@+id/slotMachineImage"
         app:layout_constraintTop_toBottomOf="@+id/imageSymbol1"
         app:layout_constraintVertical_bias="0.933"
-        app:srcCompat="@drawable/elephant" />
+        app:srcCompat="@drawable/myelephant" />
 
     <ImageView
         android:id="@+id/imageSymbol1"
@@ -81,7 +81,7 @@
         app:layout_constraintStart_toEndOf="@+id/imageSymbol1"
         app:layout_constraintTop_toTopOf="@+id/whiteSlotBg"
         app:layout_constraintVertical_bias="0.477"
-        app:srcCompat="@drawable/elephant" />
+        app:srcCompat="@drawable/myelephant" />
 
     <ImageView
         android:id="@+id/wheel2TopImage"
