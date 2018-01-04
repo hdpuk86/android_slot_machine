@@ -28,8 +28,3 @@ I had my MVP up and running on day 3 of the project which allowed time to add ex
 I had made the slot machine class extendable to allow extra wheels and my tests showed that it was possible. However, I decided against extending the app to 5 reels because I felt I wouldn't learn anything by doing it, the code would have been the same. I would just have to add more buttons and images to the screen which is timely and I felt it would benefit me more to learn something new. 
 I did manage to display the extra symbols on the screen and from there I moved on to improving the interface. I wanted to learn and implement something new at that stage so I looked up how to add animation and sounds. This ended up working really well and drastically improved the UI. As an added extra; I whipped up a bonus minigame in just over an hour to see how much I had learned. 
 The game runs really well and I had time to refactor my code to a point where I was satisfied. There are a few things I would want to change and add in to finish things up but overall I was very happy with the end product.
-
-## Screenshots
-![Main Game Screen](https://github.com/hdpuk86/android_slot_machine/blob/master/app/src/main/res/screenshots/nudge2.png "Main Game Screen Image")
-
-[More Screenshots](https://github.com/hdpuk86/android_slot_machine/tree/master/app/src/main/res/screenshots)
