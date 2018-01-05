@@ -10,7 +10,7 @@
     <ImageView
         android:id="@+id/whiteSlotBg"
         android:layout_width="385dp"
-        android:layout_height="160dp"
+        android:layout_height="180dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
@@ -27,14 +27,14 @@
         android:layout_width="75dp"
         android:layout_height="40dp"
         android:layout_marginBottom="8dp"
-        android:layout_marginStart="36dp"
+        android:layout_marginStart="40dp"
         android:layout_marginTop="8dp"
         android:contentDescription="@string/top_symbol1"
         android:scaleType="fitXY"
         app:layout_constraintBottom_toTopOf="@+id/imageSymbol1"
         app:layout_constraintStart_toStartOf="@+id/slotMachineImage"
         app:layout_constraintTop_toTopOf="@+id/slotMachineImage"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintVertical_bias="0.333"
         app:srcCompat="@drawable/lion" />
 
     <ImageView
@@ -42,28 +42,28 @@
         android:layout_width="75dp"
         android:layout_height="32dp"
         android:layout_marginBottom="8dp"
-        android:layout_marginStart="36dp"
+        android:layout_marginStart="40dp"
         android:layout_marginTop="8dp"
         android:contentDescription="@string/bottom_symbol_wheel_1"
         android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="@+id/slotMachineImage"
         app:layout_constraintStart_toStartOf="@+id/slotMachineImage"
         app:layout_constraintTop_toBottomOf="@+id/imageSymbol1"
-        app:layout_constraintVertical_bias="0.933"
-        app:srcCompat="@drawable/myelephant" />
+        app:layout_constraintVertical_bias="0.866"
+        app:srcCompat="@drawable/elephant" />
 
     <ImageView
         android:id="@+id/imageSymbol1"
         android:layout_width="75dp"
         android:layout_height="75dp"
         android:layout_marginBottom="8dp"
-        android:layout_marginStart="28dp"
+        android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
         android:contentDescription="@string/secondSymbol"
         app:layout_constraintBottom_toBottomOf="@+id/whiteSlotBg"
         app:layout_constraintStart_toStartOf="@+id/whiteSlotBg"
         app:layout_constraintTop_toTopOf="@+id/whiteSlotBg"
-        app:layout_constraintVertical_bias="0.492"
+        app:layout_constraintVertical_bias="0.505"
         app:srcCompat="@drawable/buffalo" />
 
     <ImageView
@@ -77,11 +77,11 @@
         android:contentDescription="@string/firstSymbol"
         app:layout_constraintBottom_toBottomOf="@+id/whiteSlotBg"
         app:layout_constraintEnd_toStartOf="@+id/imageSymbol3"
-        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintHorizontal_bias="0.487"
         app:layout_constraintStart_toEndOf="@+id/imageSymbol1"
         app:layout_constraintTop_toTopOf="@+id/whiteSlotBg"
-        app:layout_constraintVertical_bias="0.477"
-        app:srcCompat="@drawable/myelephant" />
+        app:layout_constraintVertical_bias="0.505"
+        app:srcCompat="@drawable/elephant" />
 
     <ImageView
         android:id="@+id/wheel2TopImage"
@@ -95,10 +95,10 @@
         android:scaleType="fitXY"
         app:layout_constraintBottom_toTopOf="@+id/imageSymbol2"
         app:layout_constraintEnd_toStartOf="@+id/wheel3TopImage"
-        app:layout_constraintHorizontal_bias="0.463"
+        app:layout_constraintHorizontal_bias="0.475"
         app:layout_constraintStart_toEndOf="@+id/wheel1TopImage"
         app:layout_constraintTop_toTopOf="@+id/slotMachineImage"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintVertical_bias="0.285"
         app:srcCompat="@drawable/buffalo" />
 
     <ImageView
@@ -113,10 +113,10 @@
         android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="@+id/slotMachineImage"
         app:layout_constraintEnd_toStartOf="@+id/wheel3BottomImage"
-        app:layout_constraintHorizontal_bias="0.463"
+        app:layout_constraintHorizontal_bias="0.475"
         app:layout_constraintStart_toEndOf="@+id/wheel1BottomImage"
         app:layout_constraintTop_toBottomOf="@+id/imageSymbol2"
-        app:layout_constraintVertical_bias="0.937"
+        app:layout_constraintVertical_bias="0.857"
         app:srcCompat="@drawable/alligator" />
 
     <ImageView
@@ -124,13 +124,13 @@
         android:layout_width="75dp"
         android:layout_height="75dp"
         android:layout_marginBottom="8dp"
-        android:layout_marginEnd="24dp"
+        android:layout_marginEnd="30dp"
         android:layout_marginTop="8dp"
         android:contentDescription="@string/symbolThree"
         app:layout_constraintBottom_toBottomOf="@+id/whiteSlotBg"
         app:layout_constraintEnd_toEndOf="@+id/whiteSlotBg"
         app:layout_constraintTop_toTopOf="@+id/whiteSlotBg"
-        app:layout_constraintVertical_bias="0.492"
+        app:layout_constraintVertical_bias="0.505"
         app:srcCompat="@drawable/hippo" />
 
     <ImageView
@@ -138,14 +138,14 @@
         android:layout_width="75dp"
         android:layout_height="40dp"
         android:layout_marginBottom="8dp"
-        android:layout_marginEnd="28dp"
+        android:layout_marginEnd="36dp"
         android:layout_marginTop="8dp"
         android:contentDescription="@string/top_symbol_wheel_3"
         android:scaleType="fitXY"
         app:layout_constraintBottom_toTopOf="@+id/imageSymbol3"
         app:layout_constraintEnd_toEndOf="@+id/slotMachineImage"
         app:layout_constraintTop_toTopOf="@+id/slotMachineImage"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintVertical_bias="0.285"
         app:srcCompat="@drawable/alligator" />
 
     <ImageView
@@ -153,23 +153,22 @@
         android:layout_width="75dp"
         android:layout_height="32dp"
         android:layout_marginBottom="8dp"
-        android:layout_marginEnd="28dp"
+        android:layout_marginEnd="36dp"
         android:layout_marginTop="8dp"
         android:contentDescription="@string/bottom_symbol_wheel_3"
         android:scaleType="fitXY"
         app:layout_constraintBottom_toTopOf="@+id/holdButton3"
         app:layout_constraintEnd_toEndOf="@+id/slotMachineImage"
         app:layout_constraintTop_toBottomOf="@+id/imageSymbol3"
-        app:layout_constraintVertical_bias="0.736"
         app:srcCompat="@drawable/snake" />
 
 
     <ImageView
         android:id="@+id/animation1"
         android:layout_width="120dp"
-        android:layout_height="160dp"
+        android:layout_height="180dp"
         android:layout_marginBottom="12dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:background="@android:color/transparent"
         android:contentDescription="@string/animation_image_view_wheel_1"
@@ -177,12 +176,13 @@
         app:layout_constraintBottom_toBottomOf="@+id/slotMachineImage"
         app:layout_constraintStart_toStartOf="@+id/slotMachineImage"
         app:layout_constraintTop_toTopOf="@+id/slotMachineImage"
+        app:layout_constraintVertical_bias="0.6"
         app:srcCompat="@android:color/transparent" />
 
     <ImageView
         android:id="@+id/animation2"
         android:layout_width="120dp"
-        android:layout_height="160dp"
+        android:layout_height="180dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
@@ -201,9 +201,9 @@
     <ImageView
         android:id="@+id/animation3"
         android:layout_width="120dp"
-        android:layout_height="160dp"
+        android:layout_height="180dp"
         android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="16dp"
         android:layout_marginTop="8dp"
         android:background="@android:color/transparent"
         android:contentDescription="@string/animation_image_view_wheel_3"
@@ -211,7 +211,6 @@
         app:layout_constraintBottom_toBottomOf="@+id/slotMachineImage"
         app:layout_constraintEnd_toEndOf="@+id/slotMachineImage"
         app:layout_constraintTop_toTopOf="@+id/slotMachineImage"
-        app:layout_constraintVertical_bias="0.458"
         app:srcCompat="@android:color/transparent" />
 
     <ImageView
@@ -227,7 +226,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/slotmachine" />
+        app:srcCompat="@drawable/frame" />
 
     <ImageButton
         android:id="@+id/spinButton"

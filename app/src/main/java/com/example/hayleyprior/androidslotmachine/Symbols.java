@@ -11,7 +11,7 @@ public enum Symbols {
     RHINO(80, "@drawable/rhino"),
     LION(75, "@drawable/lion"),
     BUFFALO(60, "@drawable/buffalo"),
-    ELEPHANT(50, "@drawable/myelephant"),
+    ELEPHANT(50, "@drawable/elephant"),
     ALLIGATOR(40, "@drawable/alligator"),
     HIPPO(30, "@drawable/hippo"),
     SNAKE(20, "@drawable/snake"),
