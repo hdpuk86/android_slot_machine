@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#d14836</color>
+    <color name="colorPrimary">#f44336</color>
     <color name="colorPrimaryDark">#120015</color>
-    <color name="colorAccent">#9ee493</color>
+    <color name="colorAccent">#ffe57f</color>
     <color name="nudge">#fff584</color>
     <color name="nudgeBG">#ff0d00</color>
     <color name="gold">#8c8100</color>
